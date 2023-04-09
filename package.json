@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href /mdzn.github.io/",
+    "build": "ng build --base-href /kfoss/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
