@@ -1,0 +1,33 @@
+<header id="header">
+	<div (click)="router.navigate(['/'])"
+		class="left">
+		<img alt="KFOSS"
+			class="home-logo"
+			src="assets/images/circle-kfoss.png"
+			height="50">
+	</div>
+	<div class="center">
+		<h1 *ngIf="showTitle"
+			[ngStyle]="{'font-size': currentTitle.size + 'rem'}"
+			id="title"
+			class="title-text no-break"
+			@fadeIn
+			@fadeOut>
+			{{currentTitle.text}}
+		</h1>
+	</div>
+	<div *ngIf="showRight"
+		class="right"
+		@fadeIn
+		@fadeOut>
+		<img alt="kevin medzorian"
+			class="my-icon"
+			src="assets/images/circle-me.png"
+			height="50">
+		<div class="credits no-break">kevin medzorian</div>
+	</div>
+</header>
+<div id="outlet"
+	style="padding-top: 30px">
+	<router-outlet></router-outlet>
+</div>
