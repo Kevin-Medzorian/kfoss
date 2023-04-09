@@ -1,7 +1,7 @@
 
 
 
-<div style="margin: auto; text-align: center;">
+<div style="margin: auto; text-align: center; font-size: larger; padding: 50px 0;">
     <span class="k">K</span>
     evin's
     <span class="k">F</span>
@@ -14,15 +14,21 @@
     oftware
 </div>
 
+<div style="text-align: center; margin-bottom: 50px;">
+“Talk is cheap. Show me the code.”
+<br>
+<i style="font-size: small;">― Linus Torvalds</i>
+</div>
+
 <div class="carousel">
     <ngb-carousel *ngIf="images">
         <ng-template ngbSlide>
             <div class="img-wrapper">
-                <img style="width:100%" [src]="images[0]" alt="Random first slide" />
+                <img style="width:100%" [src]="images[0]" alt="always free." />
             </div>
             <div class="carousel-caption">
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h3>Always Free. Always Open.</h3>
+                <p>All source code is available for free on GitHub.</p>
             </div>
         </ng-template>
         <ng-template ngbSlide>
@@ -30,8 +36,8 @@
                 <img [src]="images[1]" alt="Random second slide" />
             </div>
             <div class="carousel-caption">
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Diverse Tech-Stack</h3>
+                <p>Variety of software solutions, including games, textures, models, and APIs.</p>
             </div>
         </ng-template>
         <ng-template ngbSlide>
@@ -39,8 +45,8 @@
                 <img [src]="images[2]" alt="Random third slide" />
             </div>
             <div class="carousel-caption">
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h3>Sophisticated Modeling</h3>
+                <p>Software is developed with a strict sense of data modelling.</p>
             </div>
         </ng-template>
     </ngb-carousel>

@@ -11,5 +11,6 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-	images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  imagePath = '/assets/images/';
+	images = ['sample-code.png', 'sample-unity.png', 'sample-smss-inverted.png'].map((n) => this.imagePath + n);
 }
