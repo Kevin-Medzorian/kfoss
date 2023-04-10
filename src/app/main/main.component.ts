@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  // Use this file to store commonly used variables, functions, etc...
+  constructor(@Inject(APP_BASE_HREF) public baseHref: string){
 
+  }
 }
