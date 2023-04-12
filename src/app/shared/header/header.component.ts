@@ -2,6 +2,7 @@ import { Component, ElementRef, Renderer2, OnInit, ViewChild } from '@angular/co
 import { Router } from '@angular/router';
 import { FadeIn, FadeOut } from '../animations';
 
+const SCROLL_Y_MULTIPLIER = 1.45;
 const DELAY = 200;
 interface Title {
   text: string;
@@ -56,7 +57,7 @@ export class HeaderComponent implements OnInit {
     if (this.currentTitle == this.titles[0]) {
       this.showRight = window.innerWidth > 400;
     } else {
-      this.showRight = window.innerWidth > 600;
+      this.showRight = window.innerWidth > 500;
     }
   }
 
@@ -70,6 +71,25 @@ export class HeaderComponent implements OnInit {
   }
 
   resizeHeader(ev: any) {
+    const currentHeaderHeight = this.initialHeight - window.scrollY * SCROLL_Y_MULTIPLIER;
+
+    if (currentHeaderHeight < this.newHeight){
+      this.outlet!.style.marginTop  = this.initialHeight + 'px';
+      this.header!.style.height     = this.minHeight + "px";
+      this.header!.style.position   = "fixed";
+      if (this.showTitle && this.currentTitle != this.titles[1])
+        this.animatedTitleChange(this.titles[1]);
+    } else {
+      if (this.showTitle && this.currentTitle != this.titles[0])
+        this.animatedTitleChange(this.titles[0]);
+      this.outlet!.style.marginTop = 'unset';
+      this.header!.style.height = this.initialHeight + "px";
+      this.header!.style.position = "unset";
+    }
+  }
+
+  // OLD LOGIC:
+  /* resizeHeader(ev: any) {
     this.newHeight = this.initialHeight - window.scrollY / 2;
 
     if (this.newHeight < this.minHeight) {
@@ -89,7 +109,5 @@ export class HeaderComponent implements OnInit {
 
     if (this.newHeight > 100)
       this.outlet!.style.marginTop = this.newHeight + window.scrollY + 'px';
-
-  }
-
+  }*/
 }

@@ -13,8 +13,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 0 0 24px;
-    position: fixed;
+    // padding: 0 0 0 24px; // OLD LOGIC
+    //position: fixed; // OLD LOGIC
     top: 0;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
     -webkit-transform: translate3d(0,0,0);
@@ -58,13 +58,25 @@ header .right {
     line-height: calc($header-min-height - 14px - 14px);
 }
 
-.home-logo {
-    cursor: pointer;
-    transition-duration: 250ms;
-    &:hover{
-        filter: brightness(1.25) drop-shadow(0px 0px 4px white);
-    }
-    &:active{
-        filter: brightness(0.75) drop-shadow(0px 0px 4px white);
+
+.logo {
+    position: sticky;
+    align-self: normal;
+    top: 0;
+    left: 0;
+    height: $header-min-height;
+    width:  $header-min-height;
+    padding: calc($header-min-height * 0.15);
+    img {
+        width:  calc($header-min-height * 0.70);
+        height: calc($header-min-height * 0.70);
+        cursor: pointer;
+        transition-duration: 250ms;
+        &:hover{
+            filter: brightness(1.25) drop-shadow(0px 0px 4px white);
+        }
+        &:active{
+            filter: brightness(0.75) drop-shadow(0px 0px 4px white);
+        }
     }
 }
