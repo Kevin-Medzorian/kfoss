@@ -1,7 +1,4 @@
-
-
-
-<div style="margin: auto; text-align: center; font-size: larger; padding: 50px 0;">
+<h2 style="margin: auto; text-align: center; padding: 50px 0;">
     <span class="k">K</span>
     evin's
     <span class="k">F</span>
@@ -12,13 +9,13 @@
     ource
     <span class="k">S</span>
     oftware
-</div>
+</h2>
 
-<div style="text-align: center; margin-bottom: 50px;">
+<h4 style="text-align: center; margin-bottom: 50px;">
 “Talk is cheap. Show me the code.”
 <br>
-<i style="font-size: small;">― Linus Torvalds</i>
-</div>
+<i style="font-size: large;">― Linus Torvalds</i>
+</h4>
 
 <div class="carousel">
     <ngb-carousel *ngIf="images">
@@ -27,8 +24,8 @@
                 <img style="width:100%" [src]="images[0]" alt="always free." />
             </div>
             <div class="carousel-caption">
-                <h3>Always Free. Always Open.</h3>
-                <p>All source code is available for free on GitHub.</p>
+                <h1>Always Free. Always Open.</h1>
+                <h4>All source code is available for free on <a style="text-decoration: none" href="https://github.com/kevin-medzorian">GitHub.</a></h4>
             </div>
         </ng-template>
         <ng-template ngbSlide>
@@ -36,8 +33,8 @@
                 <img [src]="images[1]" alt="diverse tech stack." />
             </div>
             <div class="carousel-caption">
-                <h3>Diverse Tech-Stack</h3>
-                <p>Variety of software solutions, including games, textures, models, and APIs.</p>
+                <h1>Diverse Tech-Stack</h1>
+                <h4>Variety of software solutions, including games, textures, models, and APIs.</h4>
             </div>
         </ng-template>
         <ng-template ngbSlide>
@@ -45,13 +42,32 @@
                 <img [src]="images[2]" alt="sophisticated modeling." />
             </div>
             <div class="carousel-caption">
-                <h3>Sophisticated Modeling</h3>
-                <p>Software is developed with a strict sense of data modelling.</p>
+                <h1>Sophisticated Modeling</h1>
+                <h4>Software is developed with a strict sense of data modelling.</h4>
             </div>
         </ng-template>
     </ngb-carousel>
 </div>
 
-
+<div class="container-md overflow-hidden mt-5">
+    <div class="row gx-5 justify-content-center">
+        <div class="col-lg mt-5">
+            <img alt="Android Metronome" class="img-fluid program-card-img" [src]="app.baseHref + 'assets/images/Android-Metronome.png'"/>
+        </div>
+        <div class="col-lg mt-5">
+            <img alt="Accents Tool" class="img-fluid program-card-img" [src]="app.baseHref + 'assets/images/Spanish-Accents.png'"/>
+            <img alt="Snipping Tool" class="img-fluid program-card-img mt-5" [src]="app.baseHref + 'assets/images/SnippingTool.png'"/>
+            <img alt="Definition Finder" class="img-fluid program-card-img mt-5" [src]="app.baseHref + 'assets/images/definition-finder-1.png'"/>
+        </div>
+    </div>
+    <!-- <div class="row gx-5 mt-5">
+        <div class="col program-card">
+            <img alt="Snipping Tool" class="img-fluid" [src]="app.baseHref + 'assets/images/SnippingTool.png'"/>
+        </div>
+        <div class="col program-card">
+            <img alt="Definition Finder" class="img-fluid" [src]="app.baseHref + 'assets/images/definition-finder-1.png'"/>
+        </div>
+    </div> -->
+</div>
 <div style="height: 3000px">
 </div>

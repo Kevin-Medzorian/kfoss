@@ -13,7 +13,7 @@ import { MainComponent } from 'src/app/main/main.component';
 })
 export class HomeComponent {
 
-  constructor(private app: MainComponent){}
+  constructor(public app: MainComponent){}
   imagePath = this.app.baseHref + 'assets/images/';
 	images = ['sample-code.png', 'sample-unity.png', 'sample-smss-inverted.png'].map((n) => this.imagePath + n);
 }

@@ -7,11 +7,12 @@
     width: 100%;
     background-color: gray;
     margin-top: 20px;
-    filter: drop-shadow(0px 0px 2px black);
+    //filter: drop-shadow(0px 0px 2px black);
 }
 
 .carousel-caption {
-    filter: drop-shadow(0px 0px 4px black);
+    text-shadow: 0px 0px 4px black;
+    bottom: calc(40%);
 }
 
 .img-wrapper {
@@ -20,8 +21,17 @@
 }
 
 .img-wrapper img {
-    filter: blur(2px);
+    filter: blur(3px);
     object-fit: cover;
     width: 100%;
     height: 700px;
 }
+
+.program-card-img {
+    filter: drop-shadow(0px 0px 4px black);
+    border-radius: 8px;
+    max-height: 100%;
+    margin: auto;
+    display:flex;
+}
+
