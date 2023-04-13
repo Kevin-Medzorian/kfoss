@@ -2,7 +2,6 @@ import { Component, ElementRef, Renderer2, OnInit, ViewChild } from '@angular/co
 import { Router } from '@angular/router';
 import { FadeIn, FadeOut } from '../animations';
 
-const SCROLL_Y_MULTIPLIER = 1.45;
 const DELAY = 200;
 interface Title {
   text: string;
@@ -16,7 +15,6 @@ interface Title {
   animations: [FadeIn(DELAY), FadeOut(DELAY)]
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('title', { static: false }) titleElem! : ElementRef;
   initialHeight: number = 300;
   minHeight:     number =  85;
   newHeight:     number =   0;
@@ -40,7 +38,6 @@ export class HeaderComponent implements OnInit {
     this.header = document.getElementById('header')!;
     this.outlet = document.getElementById('outlet')!;
     this.title  = document.getElementById('title')!;
-    this.outlet.style.marginTop = this.initialHeight + 'px';
   }
 
   ngAfterViewInit() {
@@ -71,15 +68,17 @@ export class HeaderComponent implements OnInit {
   }
 
   resizeHeader(ev: any) {
-    const currentHeaderHeight = this.initialHeight - window.scrollY * SCROLL_Y_MULTIPLIER;
+    const currentHeaderHeight = this.initialHeight - window.scrollY;
 
-    if (currentHeaderHeight < this.newHeight){
+    if (currentHeaderHeight <= this.minHeight){
+      // Force a fixed/sticky header.
       this.outlet!.style.marginTop  = this.initialHeight + 'px';
       this.header!.style.height     = this.minHeight + "px";
       this.header!.style.position   = "fixed";
       if (this.showTitle && this.currentTitle != this.titles[1])
         this.animatedTitleChange(this.titles[1]);
     } else {
+      // force an concurrent-dom header
       if (this.showTitle && this.currentTitle != this.titles[0])
         this.animatedTitleChange(this.titles[0]);
       this.outlet!.style.marginTop = 'unset';

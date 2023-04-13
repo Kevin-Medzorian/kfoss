@@ -1,73 +1,225 @@
-<h2 style="margin: auto; text-align: center; padding: 50px 0;">
-    <span class="k">K</span>
-    evin's
-    <span class="k">F</span>
-    ree and
-    <span class="k">O</span>
-    pen
-    <span class="k">S</span>
-    ource
-    <span class="k">S</span>
-    oftware
+<h2 class="title-text">
+    <div>
+        <span>K</span>evin's&nbsp;
+    </div>
+    <div>
+        <span>F</span>ree&nbsp;
+    </div>
+    <div>and&nbsp;</div>
+    <div>
+        <span>O</span>pen&nbsp;
+    </div>
+    <div>
+        <span>S</span>ource&nbsp;
+    </div>
+    <div>
+        <span>S</span>oftware
+    </div>
 </h2>
 
 <h4 style="text-align: center; margin-bottom: 50px;">
-“Talk is cheap. Show me the code.”
-<br>
-<i style="font-size: large;">― Linus Torvalds</i>
+    “Talk is cheap. Show me the code.”
+    <br>
+    <i style="font-size: large;">― Linus Torvalds</i>
 </h4>
 
 <div class="carousel">
     <ngb-carousel *ngIf="images">
         <ng-template ngbSlide>
             <div class="img-wrapper">
-                <img style="width:100%" [src]="images[0]" alt="always free." />
+                <img
+                    style="width:100%"
+                    [src]="images[0]"
+                    alt="always free.">
             </div>
             <div class="carousel-caption">
                 <h1>Always Free. Always Open.</h1>
-                <h4>All source code is available for free on <a style="text-decoration: none" href="https://github.com/kevin-medzorian">GitHub.</a></h4>
+                <h4>
+                    All source code is available for free on
+                    <a
+                        style="text-decoration: none"
+                        href="https://github.com/kevin-medzorian">
+                        GitHub.
+                    </a>
+                </h4>
             </div>
         </ng-template>
         <ng-template ngbSlide>
             <div class="img-wrapper">
-                <img [src]="images[1]" alt="diverse tech stack." />
+                <img
+                    [src]="images[1]"
+                    alt="diverse tech stack.">
             </div>
             <div class="carousel-caption">
                 <h1>Diverse Tech-Stack</h1>
-                <h4>Variety of software solutions, including games, textures, models, and APIs.</h4>
+                <h4>
+                    Variety of software solutions, including games, textures, models, and APIs.
+                </h4>
             </div>
         </ng-template>
         <ng-template ngbSlide>
             <div class="img-wrapper">
-                <img [src]="images[2]" alt="sophisticated modeling." />
+                <img
+                    [src]="images[2]"
+                    alt="sophisticated modeling.">
             </div>
             <div class="carousel-caption">
                 <h1>Sophisticated Modeling</h1>
-                <h4>Software is developed with a strict sense of data modelling.</h4>
+                <h4>
+                    Software is developed with a strict sense of data modelling.
+                </h4>
             </div>
         </ng-template>
     </ngb-carousel>
 </div>
 
-<div class="container-md overflow-hidden mt-5">
-    <div class="row gx-5 justify-content-center">
+<!-- <div class="container-md overflow-hidden mt-5">
+    <div class="row gx-5 justify-content-center p-2">
         <div class="col-lg mt-5">
-            <img alt="Android Metronome" class="img-fluid program-card-img" [src]="app.baseHref + 'assets/images/Android-Metronome.png'"/>
+            <img alt="Android Metronome" class="img-fluid program-card-img" style="width: 300px" [src]="app.baseHref + 'assets/images/Android-Metronome.png'"/>
         </div>
         <div class="col-lg mt-5">
-            <img alt="Accents Tool" class="img-fluid program-card-img" [src]="app.baseHref + 'assets/images/Spanish-Accents.png'"/>
-            <img alt="Snipping Tool" class="img-fluid program-card-img mt-5" [src]="app.baseHref + 'assets/images/SnippingTool.png'"/>
-            <img alt="Definition Finder" class="img-fluid program-card-img mt-5" [src]="app.baseHref + 'assets/images/definition-finder-1.png'"/>
+            <img alt="Accents Tool" class="img-fluid program-card-img" style="width: 350px" [src]="app.baseHref + 'assets/images/Spanish-Accents.png'"/>
+            <img alt="Snipping Tool" class="img-fluid program-card-img mt-5" style="width: 300px" [src]="app.baseHref + 'assets/images/SnippingTool.png'"/>
         </div>
     </div>
-    <!-- <div class="row gx-5 mt-5">
-        <div class="col program-card">
-            <img alt="Snipping Tool" class="img-fluid" [src]="app.baseHref + 'assets/images/SnippingTool.png'"/>
+    <div class="row gx-5 justify-content-center p-2">
+        <div class="col-lg mt-5">
+            <img alt="Definition Finder" class="img-fluid program-card-img"  style="width: 750px" [src]="app.baseHref + 'assets/images/definition-finder-1.png'"/>
         </div>
-        <div class="col program-card">
-            <img alt="Definition Finder" class="img-fluid" [src]="app.baseHref + 'assets/images/definition-finder-1.png'"/>
+    </div>
+</div> -->
+    <div class="d-flex gx-5 flex-wrap justify-content-center">
+        <div class="card p-0 m-5">
+            <h5 class="card-header">Tools
+                <span class="text-muted">{{tools.length}} items</span>
+            </h5>
+            <div class="card-body p-0">
+                <div class="list-group list-group-flush">
+                    <a *ngFor="let tool of tools" href="#" class="list-group-item list-group-item-action" (mouseleave)="tool.hov = false;" (mouseover)="tool.hov = true;">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{tool.title}}</h5>
+                      </div>
+                      <p class="mb-1">{{tool.text}}</p>
+                      <span *ngIf="tool.hov" class="goto" @fadeIn @fadeOut><i class="bi bi-arrow-right-circle"></i></span>
+                    </a>
+                  </div>
+            </div>
         </div>
-    </div> -->
-</div>
-<div style="height: 3000px">
-</div>
+        <div class="card p-0 m-5">
+            <h5 class="card-header"></h5>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">
+                    With supporting text below as a natural lead-in to additional content.
+                </p>
+                <a
+                    href="#"
+                    class="btn btn-primary">
+                    Go somewhere
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center">
+        <div class="card p-0 m-5">
+            <h5 class="card-header">Tools</h5>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">
+                    With supporting text below as a natural lead-in to additional content.
+                </p>
+                <a
+                    href="#"
+                    class="btn btn-primary">
+                    Go somewhere
+                </a>
+            </div>
+        </div>
+        <div class="card p-0 m-5">
+            <h5 class="card-header">Tools</h5>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">
+                    With supporting text below as a natural lead-in to additional content.
+                </p>
+                <a
+                    href="#"
+                    class="btn btn-primary">
+                    Go somewhere
+                </a>
+            </div>
+        </div>
+    </div>
+
+<!-- <div class="container-fluid d-flex justify-content-center">
+    <div class="row p-2">
+        <div class="col">
+            <div class="card p-0">
+                <h5 class="card-header">Tools</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">
+                        With supporting text below as a natural lead-in to additional content.
+                    </p>
+                    <a
+                        href="#"
+                        class="btn btn-primary">
+                        Go somewhere
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">Featured</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">
+                        With supporting text below as a natural lead-in to additional content.
+                    </p>
+                    <a
+                        href="#"
+                        class="btn btn-primary">
+                        Go somewhere
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row p-2">
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">Featured</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">
+                        With supporting text below as a natural lead-in to additional content.
+                    </p>
+                    <a
+                        href="#"
+                        class="btn btn-primary">
+                        Go somewhere
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">Featured</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">
+                        With supporting text below as a natural lead-in to additional content.
+                    </p>
+                    <a
+                        href="#"
+                        class="btn btn-primary">
+                        Go somewhere
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div style="height: 3000px"></div>

@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
+import { APP_BASE_HREF, NgFor, PlatformLocation } from '@angular/common';
 
 // Get baseHref from compilation.
 export function getBaseHref(platformLocation: PlatformLocation): string {
