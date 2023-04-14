@@ -42,17 +42,20 @@
 .card {
     border-radius: 15px;
     width: 800px;
-    min-width: 400px;
+    min-width: 350px;
     height: fit-content;
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.7);
-    
+    margin-bottom: 0px !important;
+    border: none;
     .card-body {
         min-height: 300px;
         max-height: 600px;
         height: fit-content;
-        border-radius: 10px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
         padding-left: 0;
         padding-right: 0;
+        border-top: 2px solid rgba(0, 0, 0, 0.125) !important;
         .textures {
             min-height: 400px;
             max-height: 600px;
@@ -80,6 +83,9 @@
 
     .card-header {
         font-size: 2rem;
+        border: 1px solid var(--card-cap-bg);
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
     }
 
     .text-muted {
