@@ -11,8 +11,11 @@ const DELTA = 500;
 export class LoaderComponent {
   show = true;
   ngOnInit(){
-    setTimeout(()=>{
-      this.show=false;
-    }, 500);
+    window.addEventListener('load', (event)=>{
+      setTimeout(()=>{
+        this.show=false;
+      }, 100);
+    })
+
   }
 }
