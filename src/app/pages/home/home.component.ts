@@ -10,13 +10,14 @@ const DELTA=200;
 interface Tool {
   title: string;
   text: string;
-  hov?: boolean;
+  hov?: boolean | number;
   url: string;
 }
 
 interface Texture {
   url?: string;
   fileName?: string;
+  hov?: boolean | number;
 }
 
 @Component({
@@ -36,9 +37,11 @@ export class HomeComponent {
     {title: 'Secure Text/Password Encrypter', text: 'Simple, lightweight C+Qt program that will encrypt/decrypt text using a provided hash.', url: this.app.baseHref + 'encrypter'},
     {title: 'Ad-Free Android Metronome', text: 'Simple, ad-free Android Metronome app.', url: this.app.baseHref + 'metronome'},
   ];
+  window = window;
 
   textures: Texture[] = [];
   imagePath = this.app.baseHref + 'assets/images/';
+  rawTexturePath = this.imagePath + 'textures/raw/';
 	images = ['sample-code.png', 'sample-unity.png', 'sample-smss-inverted.png'].map((n) => this.imagePath + n);
 
   constructor(public app: MainComponent){}
@@ -63,7 +66,8 @@ export class HomeComponent {
     return new Promise((resolve, reject) => {
       const reader  = new FileReader();
       reader.addEventListener("load", function () {
-          const result: Texture = {url: reader.result?.toString(), fileName: imageUrl.split("/").pop()};
+          const result: Texture = {url: reader.result?.toString(),
+                                   fileName: imageUrl.split("/").pop()?.split(".")[0] + '.png'};
           resolve(result);
       }, false);
   
