@@ -88,7 +88,10 @@
                     href="#"
                     class="list-group-item list-group-item-action"
                     (mouseleave)="tool.hov = 0"
-                    (mouseover)="tool.hov = 1">
+                    (mouseover)="tool.hov = 1"
+                    (touchend)="tool.hov = 0"
+                    (touchmove)="tool.hov = 1"
+                    (touchcancel)="tool.hov = 0">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{tool.title}}</h5>
                     </div>
@@ -126,6 +129,10 @@
                         [src]="texture.url"
                         [alt]="texture.fileName"
                         (mouseenter)="texture.hov = 1"
+                        (touchstart)="texture.hov = 1"
+                        (touchend)="texture.hov = 0"
+                        (touchmove)="texture.hov = 1"
+                        (touchcancel)="texture.hov = 0"
                         (mouseleave)="texture.hov = 0"
                         (click)="window.open(this.rawTexturePath + texture.fileName)">
                     <span *ngIf="texture.hov" class="download"
