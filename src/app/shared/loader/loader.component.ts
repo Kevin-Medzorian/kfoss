@@ -11,11 +11,18 @@ const DELTA = 500;
 export class LoaderComponent {
   show = true;
   ngOnInit(){
-    window.addEventListener('load', (event)=>{
-      setTimeout(()=>{
-        this.show=false;
-      }, 100);
-    })
+    document.body.style.overflow = 'hidden';
 
+    window.addEventListener('load', () => {
+      setTimeout(()=>this.continue(), 100);
+    });
+
+    setTimeout(()=>this.continue(), 2000);
+
+  }
+
+  continue() {
+    this.show = false;
+    document.body.style.overflow = 'unset';
   }
 }
