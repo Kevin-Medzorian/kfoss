@@ -7,10 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { ToolsComponent } from './pages/tools/tools.component';
+import { AboutComponent } from './pages/about/about.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
-
 // Get baseHref from compilation.
 export function getBaseHref(platformLocation: PlatformLocation): string {
   return platformLocation.getBaseHrefFromDOM();
@@ -22,7 +24,10 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     MainComponent,
     HeaderComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    ToolsComponent,
+    PageNotFoundComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FadeIn, FadeOut } from '../animations';
 
