@@ -7,14 +7,19 @@ import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'accents', component: ToolsComponent},
-  { path: 'metronome', component: ToolsComponent},
   { path: 'kevin-medzorian', component: AboutComponent},
-  { path: '**', component: PageNotFoundComponent },
 ];
+
+// Route all tools to the same component.
+const tools = ['accents', 'metronome', 'definition-finder', 'encrypter', 'screencapper'];
+for(const tool of tools)
+  routes.push({ path: tool, component: ToolsComponent});
+
+routes.push({ path: '**', component: PageNotFoundComponent });
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

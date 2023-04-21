@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
 
   checkShowRight() {
     if (this.currentTitle == this.titles[0]) {
-      this.showRight = window.innerWidth > 400;
+      this.showRight = window.innerWidth > 360;
     } else {
       this.showRight = window.innerWidth > 500;
     }
