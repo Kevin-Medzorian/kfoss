@@ -1,5 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { FadeIn, FadeOut } from '../animations';
+import { MainComponent } from 'src/app/main/main.component';
 
 const DELTA = 500;
 @Component({
@@ -10,10 +11,12 @@ const DELTA = 500;
 })
 export class LoaderComponent {
   show = true;
+
   ngOnInit(){
     document.body.style.overflow = 'hidden';
 
     window.addEventListener('load', () => {
+      document.body.style.overflow = 'unset';
       setTimeout(()=>this.continue(), 100);
     });
 

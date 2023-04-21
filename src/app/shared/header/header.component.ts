@@ -1,6 +1,8 @@
 import { Component, ElementRef, Renderer2, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FadeIn, FadeOut } from '../animations';
+import { PageNotFoundComponent } from 'src/app/pages/page-not-found/page-not-found.component';
+import { MainComponent } from 'src/app/main/main.component';
 
 const DELAY = 200;
 interface Title {
@@ -30,7 +32,7 @@ export class HeaderComponent implements OnInit {
   outlet?: HTMLElement;
   title?:  HTMLElement;
 
-  constructor(public element: ElementRef, public renderer: Renderer2, public router: Router) {
+  constructor(public element: ElementRef, public renderer: Renderer2, public router: Router, public app: MainComponent) {
     window.scrollTo(0, 0);
   }
 
@@ -87,26 +89,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // OLD LOGIC:
-  /* resizeHeader(ev: any) {
-    this.newHeight = this.initialHeight - window.scrollY / 2;
-
-    if (this.newHeight < this.minHeight) {
-      this.newHeight = this.minHeight;
-      if (this.currentTitle != this.titles[1])
-        this.animatedTitleChange(this.titles[1]);
-    } else if (this.currentTitle != this.titles[0]){ 
-      this.animatedTitleChange(this.titles[0]);
-    }
-
-    // let fontsize = this.newHeight / this.initialHeight;
-    // if (fontsize >= 0.5) {
-    //   this.header!.style.fontSize = fontsize + 'em';
-    // }
-
-    this.header!.style.height = this.newHeight + 'px';
-
-    if (this.newHeight > 100)
-      this.outlet!.style.marginTop = this.newHeight + window.scrollY + 'px';
-  }*/
+  // Sets the currentComponent var in MainComponent using router-outlet 'activate' callback event.
+  onActivate(event: any): void {
+    this.app.currentComponent = event.constructor.name;
+  }
 }

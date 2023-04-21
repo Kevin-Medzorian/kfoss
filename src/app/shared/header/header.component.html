@@ -28,5 +28,5 @@
 </header>
 <div id="outlet"
 	style="padding-top: 30px;">
-	<router-outlet></router-outlet>
+	<router-outlet (activate)="onActivate($event)"></router-outlet>
 </div>
