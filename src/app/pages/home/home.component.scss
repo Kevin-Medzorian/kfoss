@@ -34,6 +34,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    div {
+        display: inline-flex;
+    }
     span {
         font-weight: bold;
     }
@@ -61,7 +64,7 @@
     border: none;
     .card-body {
         min-height: 100px;
-        max-height: 600px;
+        max-height: 700px;
         height: fit-content;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
@@ -161,5 +164,11 @@
             display: table-cell;
             vertical-align: middle;
         }
+    }
+}
+
+@media only screen and (max-width: 711px) {
+    .euler-text {
+        text-align: center !important;
     }
 }

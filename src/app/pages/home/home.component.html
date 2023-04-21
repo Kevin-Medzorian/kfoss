@@ -100,12 +100,12 @@
 					(touchend)="tool.hov = 0"
 					(touchmove)="tool.hov = 1"
 					(touchcancel)="tool.hov = 0"
-					href="#"
+					[href]="app.baseHref + tool.route"
 					class="list-group-item list-group-item-action">
 					<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1">{{tool.title}}</h5>
+						<h5 class="mb-1">{{tool.name}}</h5>
 					</div>
-					<p class="mb-1">{{tool.text}}</p>
+					<p class="mb-1">{{tool.desc}}</p>
 					<span *ngIf="tool.hov"
 						class="goto"
 						@fadeIn
@@ -170,7 +170,7 @@
 		<div class="card-body">
 			<div class="d-flex justify-content-center">
 				<img class="img-fluid" style="padding: 20px;"
-					src="/assets/images/models.png"
+					src="/assets/images/models.jpg"
 					alt="Models">
 			</div>
 			<div class="d-flex justify-content-center nowrap">
@@ -190,8 +190,8 @@
 		<div class="card-body"
 			style="padding-left: 20px; padding-right: 20px;">
 			<div class="text-center">
-				<span style="font-size: 1.5rem;">
-					What is
+				<span style="font-size: 1.5rem; display: inline-flex;">
+					What is&nbsp;
 					<a style="text-decoration: none"
 						href="https://projecteuler.net/">
 						Project Euler
@@ -199,18 +199,18 @@
 					?
 				</span>
 				<div class="row">
-					<div class="col-10"
+					<div class="col-10 euler-text"
 						style="margin: auto; text-align:right;">
 						"Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve.
                         Although mathematics will help you arrive at elegant and efficient methods, the use of a computer and programming skills will be required to solve most problems.""
 						<br>
 						<i style="font-size: 1rem;">― Colin Hughes</i>
 					</div>
-					<div class="col-2">
+					<div class="col-2" style="flex: 1 1 100px;">
 						<img class="img-fluid"
 							src="/assets/images/euler_portrait.jpg"
 							alt="Euler Portrait"
-							style="border-radius: 20px; box-shadow: 0 0 4px black;">
+							style="border-radius: 20px; box-shadow: 0 0 4px black; max-height: 150px;">
 					</div>
 				</div>
 				<div class="mt-5">
