@@ -9,8 +9,8 @@ import { Component, Inject } from '@angular/core';
 export class MainComponent {
 
   public currentComponent: string = "";
-  public ignorePages = ['PageNotFoundComponent'];
-  public enableLoader = false;
+  public ignorePages = ['PageNotFoundComponent', 'ToolsComponent', 'AboutComponent'];
+  public enableLoader = true;
 
   // Use this file to store commonly used variables, functions, etc...
   constructor(@Inject(APP_BASE_HREF) public baseHref: string){
