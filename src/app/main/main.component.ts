@@ -7,8 +7,12 @@ import { Component, Inject } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+
+  public currentComponent: string = "";
+  public preventLoader = ['PageNotFoundComponent'];
+
   // Use this file to store commonly used variables, functions, etc...
   constructor(@Inject(APP_BASE_HREF) public baseHref: string){
-
   }
+
 }
