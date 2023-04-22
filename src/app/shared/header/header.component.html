@@ -17,27 +17,22 @@
 			</h1>
 		</ng-container>
 		<ng-template #menu>
-
-			<h1 class="menu-trigger title-text no-break" (click)="dropdown.open = !dropdown.open">
-				Main Menu <i [ngClass]="dropdown.open ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i>
-			</h1>
-			<div class="menu" *ngIf="dropdown.open" [@dropDownMenu]>
-				<h3 class="menu-item" *ngFor="let item of dropdown.menu; let i = index">
-					{{item.text}}
-				</h3>
-			</div>
-
-
-			<!-- <div ngbDropdown class="d-inline-block">
-				<h1 id="header-nav" class="title-text no-break" style="font-size: 2rem;" ngbDropdownToggle>
-					Toggle dropdown
+			<div class="dropdown" (click)="dropdown.open = !dropdown.open">
+				<h1 class="menu-trigger title-text no-break">
+					Main Menu 
+					<div class="dropdown-button">
+						<i *ngIf="dropdown.open else down" class='bi bi-chevron-up position-absolute' @fadeIn @fadeOut></i>
+						<ng-template #down>
+							<i class='bi bi-chevron-down position-absolute' @fadeIn @fadeOut></i>
+						</ng-template>
+					</div>
 				</h1>
-				<div ngbDropdownMenu aria-labelledby="header-nav">
-					<button ngbDropdownItem>Action - 1</button>
-					<button ngbDropdownItem>Another Action</button>
-					<button ngbDropdownItem>Something else is here</button>
+				<div class="menu" [class.gradient]="dropdown.open" *ngIf="dropdown.open" [@dropDownMenu]>
+					<h4 class="menu-item" *ngFor="let item of dropdown.menu; let i = index">
+						{{item.text}}
+					</h4>
 				</div>
-			</div> -->
+			</div>
 		</ng-template>
 	</div>
 	<div *ngIf="showRight"

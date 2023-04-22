@@ -41,20 +41,8 @@ export class HeaderComponent {
   constructor(public element: ElementRef, public renderer: Renderer2, public router: Router, public app: MainComponent) {
     //window.scrollTo(0, 0);
   }
-
   ngAfterViewInit() {
-    if (this.app.currentComponent == 'HomeComponent') {
-      document.addEventListener('scroll', (ev) => {
-        this.resizeHeader(ev);
-      });
-
-      window.onresize = () =>{
-        this.checkShowRight();
-      }
-    } else {
-      this.stickyHeader();
-      this.showRight = false;
-    }
+    this.checkShowRight();
   }
 
   checkShowRight() {
@@ -107,5 +95,16 @@ export class HeaderComponent {
   // Sets the currentComponent var in MainComponent using router-outlet 'activate' callback event.
   onActivate(event: any): void {
     this.app.currentComponent = event.constructor.name;
+    if (this.app.currentComponent == 'HomeComponent') {
+      this.concurrentDomHeader();
+
+      document.addEventListener('scroll', (ev) => {
+        this.resizeHeader(ev);
+      });
+
+    } else {
+      this.stickyHeader();
+    }
+    window.onresize = () => this.checkShowRight();
   }
 }
