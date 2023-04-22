@@ -22,6 +22,9 @@
 	</div>
 </h2>
 
+<span style="display: none">
+	<img *ngFor="let img of images" [src]="img">
+</span>
 
 
 <h4 style="text-align: center; margin-bottom: 50px;">
@@ -123,9 +126,8 @@
 				class="text-muted">
 				{{textures.length}} items
 			</span>
-			<ng-template #loadingText
-				class="text-muted">
-				Loading...
+			<ng-template #loadingText>
+				<span class="text-muted">Loading...</span>
 			</ng-template>
 		</h5>
 		<div class="card-body d-flex justify-content-center">
@@ -169,7 +171,7 @@
 		</h5>
 		<div class="card-body">
 			<div class="d-flex justify-content-center">
-				<img class="img-fluid" style="padding: 20px;"
+				<img class="img-fluid" style="padding: 20px; width: 85%;"
 					src="/assets/images/models.jpg"
 					alt="Models">
 			</div>

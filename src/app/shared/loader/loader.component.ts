@@ -12,6 +12,8 @@ export class LoaderComponent {
   show = true;
 
   ngOnInit(){
+    console.log("ready state: ", document.readyState);
+
     document.body.style.overflow = 'hidden';
 
     window.addEventListener('load', () => {
@@ -19,7 +21,7 @@ export class LoaderComponent {
       setTimeout(()=>this.continue(), 100);
     });
 
-    setTimeout(()=>this.continue(), 2000);
+    setTimeout(()=>this.continue(), 1500);
 
   }
 

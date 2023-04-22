@@ -1,8 +1,8 @@
-import { Component, ElementRef, Renderer2, OnInit } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { FadeIn, FadeOut } from '../animations';
-import { PageNotFoundComponent } from 'src/app/pages/page-not-found/page-not-found.component';
+import { DropDownAnimation, FadeIn, FadeOut } from '../animations';
 import { MainComponent } from 'src/app/main/main.component';
+import { menu } from '../models/dropdown.model';
 
 const DELAY = 200;
 interface Title {
@@ -14,9 +14,14 @@ interface Title {
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  animations: [FadeIn(DELAY), FadeOut(DELAY)]
+  animations: [FadeIn(DELAY), FadeOut(DELAY), DropDownAnimation]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  // Define element references.
+  @ViewChild('header') header?: ElementRef;
+  @ViewChild('outlet') outlet?: ElementRef;
+  @ViewChild('title')  title? : ElementRef;
+
   initialHeight: number = 300;
   minHeight:     number =  85;
   newHeight:     number =   0;
@@ -24,32 +29,32 @@ export class HeaderComponent implements OnInit {
   titles: Title[]    = [ {text: 'Kfoss.', size: 4},
                          {text: 'Free & Open Source', size: 2}];
   currentTitle: Title   = this.titles[0];
+
   showTitle = true;
   showRight = true;
 
-  // Elements
-  header?: HTMLElement;
-  outlet?: HTMLElement;
-  title?:  HTMLElement;
-
+  dropdown = {
+    open: false,
+    menu: menu
+  };
+  
   constructor(public element: ElementRef, public renderer: Renderer2, public router: Router, public app: MainComponent) {
-    window.scrollTo(0, 0);
-  }
-
-  ngOnInit() {
-    this.header = document.getElementById('header')!;
-    this.outlet = document.getElementById('outlet')!;
-    this.title  = document.getElementById('title')!;
+    //window.scrollTo(0, 0);
   }
 
   ngAfterViewInit() {
-    document.addEventListener('scroll', (ev) => {
-      this.resizeHeader(ev);
-    });
+    if (this.app.currentComponent == 'HomeComponent') {
+      document.addEventListener('scroll', (ev) => {
+        this.resizeHeader(ev);
+      });
 
-    window.onresize = () =>{
-      this.checkShowRight();
-    } 
+      window.onresize = () =>{
+        this.checkShowRight();
+      }
+    } else {
+      this.stickyHeader();
+      this.showRight = false;
+    }
   }
 
   checkShowRight() {
@@ -74,19 +79,29 @@ export class HeaderComponent implements OnInit {
 
     if (currentHeaderHeight <= this.minHeight){
       // Force a fixed/sticky header.
-      this.outlet!.style.marginTop  = this.initialHeight + 'px';
-      this.header!.style.height     = this.minHeight + "px";
-      this.header!.style.position   = "fixed";
+      this.stickyHeader();
       if (this.showTitle && this.currentTitle != this.titles[1])
         this.animatedTitleChange(this.titles[1]);
     } else {
       // force an concurrent-dom header
       if (this.showTitle && this.currentTitle != this.titles[0])
         this.animatedTitleChange(this.titles[0]);
-      this.outlet!.style.marginTop = 'unset';
-      this.header!.style.height = this.initialHeight + "px";
-      this.header!.style.position = "unset";
+      this.concurrentDomHeader();
     }
+  }
+
+  stickyHeader() {
+    // Force a fixed/sticky header.
+    this.outlet!.nativeElement.style.marginTop  = this.initialHeight + 'px';
+    this.header!.nativeElement.style.height     = this.minHeight + "px";
+    this.header!.nativeElement.style.position   = "fixed";
+  }
+
+  concurrentDomHeader() {
+    // Force an concurrent-dom header
+    this.outlet!.nativeElement.style.marginTop = 'unset';
+    this.header!.nativeElement.style.height = this.initialHeight + "px";
+    this.header!.nativeElement.style.position = "unset";
   }
 
   // Sets the currentComponent var in MainComponent using router-outlet 'activate' callback event.

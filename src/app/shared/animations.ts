@@ -1,4 +1,4 @@
-import { animate, AnimationTriggerMetadata, style, transition, trigger } from "@angular/animations";
+import { animate, AnimationTriggerMetadata, query, sequence, stagger, style, transition, trigger } from "@angular/animations";
 
 export function FadeIn(delta: number): AnimationTriggerMetadata {
     return trigger('fadeIn', [
@@ -17,3 +17,36 @@ export function FadeOut(delta: number): AnimationTriggerMetadata {
         ]),
     ]);
 }
+
+export const DropDownAnimation = trigger("dropDownMenu", [
+    transition(":enter", [
+        style({ height: 0, overflow: "hidden" }),
+        query(".menu-item", [
+            style({ opacity: 0, transform: "translateY(-50px)" })
+        ]),
+        sequence([
+            animate("100ms", style({ height: "*" })),
+            query(".menu-item", [
+                stagger(-25, [
+                    animate("200ms ease", style({ opacity: 1, transform: "none" }))
+                ])
+            ])
+        ])
+    ]),
+
+    transition(":leave", [
+        style({ height: "*", overflow: "hidden" }),
+        query(".menu-item", [style({ opacity: 1, transform: "none" })]),
+        sequence([
+            query(".menu-item", [
+                stagger(25, [
+                    animate(
+                        "200ms ease",
+                        style({ opacity: 0, transform: "translateY(-50px)" })
+                    )
+                ])
+            ]),
+            animate("100ms", style({ height: 0 }))
+        ])
+    ])
+]);

@@ -68,3 +68,30 @@ header .right {
         }
     }
 }
+
+
+.menu-trigger {
+    cursor: pointer;
+}
+
+.menu {
+border-bottom: 1px solid #dcdcdc;
+background: gray;
+}
+
+.menu-item {
+text-align: center;
+padding: 15px;
+border-bottom: 1px solid #dcdcdc;
+max-width: 300px;
+margin: auto;
+width: 100%;
+cursor: pointer;
+}
+.menu-item:last-child {
+border-bottom: none;
+}
+
+.menu-item:hover {
+color: #c1c1c1;
+}
