@@ -19,7 +19,7 @@
 		<ng-template #menu>
 			<div class="dropdown" (click)="dropdown.open = !dropdown.open">
 				<h1 class="menu-trigger title-text no-break">
-					Main Menu 
+					{{dropdown.menu.current?.text}}
 					<div class="dropdown-button">
 						<i *ngIf="dropdown.open else down" class='bi bi-chevron-up position-absolute' @fadeIn @fadeOut></i>
 						<ng-template #down>
@@ -28,8 +28,10 @@
 					</div>
 				</h1>
 				<div class="menu" [class.gradient]="dropdown.open" *ngIf="dropdown.open" [@dropDownMenu]>
-					<h4 class="menu-item" *ngFor="let item of dropdown.menu; let i = index">
-						{{item.text}}
+					<h4 class="menu-item" *ngFor="let item of dropdown.menu.items; let i = index">
+						<ng-container *ngIf="item != dropdown.menu.current">
+							{{item.text}}
+						</ng-container>
 					</h4>
 				</div>
 			</div>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { tools, Tool } from 'src/app/shared/models/tools.model';
+import { menu } from 'src/app/shared/models/dropdown.model';
 
 @Component({
   selector: 'app-tools',
@@ -8,13 +10,12 @@ import { Router } from '@angular/router';
 })
 export class ToolsComponent {
 
-  public currentTool: string = "";
+  public currentTool: Tool | undefined;
 
   constructor(private router: Router){
-    this.currentTool = router.url.substring(1);
+    this.currentTool = tools.find(x => x.route == router.url.substring(1));
   }
 
   ngOnInit() {
-
   }
 }

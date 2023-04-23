@@ -1,6 +1,6 @@
 import { tools } from "./tools.model";
 
-interface Menu {
+export interface Menu {
     text:   string;
     route:  string;
 }

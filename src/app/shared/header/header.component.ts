@@ -2,12 +2,14 @@ import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DropDownAnimation, FadeIn, FadeOut } from '../animations';
 import { MainComponent } from 'src/app/main/main.component';
-import { menu } from '../models/dropdown.model';
+import { menu, Menu } from '../models/dropdown.model';
 
+// Animation delay for fadein/fadeout
 const DELAY = 200;
+
 interface Title {
-  text: string;
-  size: number;
+  text: string; 
+  size: number; // Uses size in 'rem'
 }
 
 @Component({
@@ -30,17 +32,21 @@ export class HeaderComponent {
                          {text: 'Free & Open Source', size: 2}];
   currentTitle: Title   = this.titles[0];
 
-  showTitle = true;
-  showRight = true;
+  showTitle = true; // Used for fading in/out different titles.
+  showRight = true; // Show the 'kevin medzorian' right logo/text.
 
+  // Only uses dropdown when not on home page.
   dropdown = {
     open: false,
-    menu: menu
+    menu: {
+      items: menu as Menu[], // All Menu items (except for current)
+      current: menu[0] as Menu | undefined // Current menu item.
+    },
   };
   
   constructor(public element: ElementRef, public renderer: Renderer2, public router: Router, public app: MainComponent) {
-    //window.scrollTo(0, 0);
   }
+
   ngAfterViewInit() {
     this.checkShowRight();
   }
@@ -66,15 +72,19 @@ export class HeaderComponent {
     const currentHeaderHeight = this.initialHeight - window.scrollY;
 
     if (currentHeaderHeight <= this.minHeight){
-      // Force a fixed/sticky header.
-      this.stickyHeader();
+      this.stickyHeader();       // Force a fixed/sticky header.
+
+      // Check if need to update title text
       if (this.showTitle && this.currentTitle != this.titles[1])
         this.animatedTitleChange(this.titles[1]);
+  
     } else {
-      // force an concurrent-dom header
+
+      // Check if need to update title text
       if (this.showTitle && this.currentTitle != this.titles[0])
         this.animatedTitleChange(this.titles[0]);
-      this.concurrentDomHeader();
+
+      this.concurrentDomHeader(); // force concurrent-dom header
     }
   }
 
@@ -95,6 +105,7 @@ export class HeaderComponent {
   // Sets the currentComponent var in MainComponent using router-outlet 'activate' callback event.
   onActivate(event: any): void {
     this.app.currentComponent = event.constructor.name;
+    
     if (this.app.currentComponent == 'HomeComponent') {
       this.concurrentDomHeader();
 
@@ -103,8 +114,11 @@ export class HeaderComponent {
       });
 
     } else {
+      this.dropdown.menu.current = menu.find(x => x.route == this.router.url.substring(1));
+      this.dropdown.menu.items = menu.filter(x => x != this.dropdown.menu.current);
       this.stickyHeader();
     }
+
     window.onresize = () => this.checkShowRight();
   }
 }
