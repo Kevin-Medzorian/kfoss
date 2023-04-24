@@ -11,8 +11,7 @@ const DELTA = 500;
 export class LoaderComponent {
   showLogo = false;
   showSpinner = false;
-  show = false;
-
+  show = true;
 
   ngOnInit(){
     document.body.style.overflow = 'hidden';

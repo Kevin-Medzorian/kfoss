@@ -53,6 +53,7 @@ export class HeaderComponent {
     this.checkShowRight();
   }
 
+  @HostListener('window:resize', ['$event'])
   checkShowRight() {
     const changeAtWidth = (this.currentTitle == this.titles[0]) ? 360 : 500;
     this.showRight = window.innerWidth > changeAtWidth;
