@@ -1,245 +1,262 @@
 <h2 class="title-text">
-	<div>
-		<span>K</span>
-		evin's&nbsp;
-	</div>
-	<div>
-		<span>F</span>
-		ree&nbsp;
-	</div>
-	<div>and&nbsp;</div>
-	<div>
-		<span>O</span>
-		pen&nbsp;
-	</div>
-	<div>
-		<span>S</span>
-		ource&nbsp;
-	</div>
-	<div>
-		<span>S</span>
-		oftware
-	</div>
+    <div>
+        <span>K</span>
+        evin's&nbsp;
+    </div>
+    <div>
+        <span>F</span>
+        ree&nbsp;
+    </div>
+    <div>and&nbsp;</div>
+    <div>
+        <span>O</span>
+        pen&nbsp;
+    </div>
+    <div>
+        <span>S</span>
+        ource&nbsp;
+    </div>
+    <div>
+        <span>S</span>
+        oftware
+    </div>
 </h2>
 
+
 <span style="display: none">
-	<img *ngFor="let img of images" [src]="img">
+    <img
+        *ngFor="let img of images"
+        [src]="img">
 </span>
 
 
+
 <h4 style="text-align: center; margin-bottom: 50px;">
-	“Talk is cheap. Show me the code.”
-	<br>
-	<i style="font-size: large;">― Linus Torvalds</i>
+    “Talk is cheap. Show me the code.”
+    <br>
+    <i style="font-size: large;">― Linus Torvalds</i>
 </h4>
 
 
 
+
 <div class="carousel">
-	<ngb-carousel *ngIf="images">
-		<ng-template ngbSlide>
-			<div class="img-wrapper">
-				<img [src]="images[0]"
-					style="width:100%"
-					alt="always free.">
-			</div>
-			<div class="carousel-caption">
-				<h1>
-					Always Free. Always Open.
-				</h1>
-				<h4>
-					All source code is available for free on
-					<a style="text-decoration: none"
-						href="https://github.com/kevin-medzorian">
-						GitHub.
-					</a>
-				</h4>
-			</div>
-		</ng-template>
-		<ng-template ngbSlide>
-			<div class="img-wrapper">
-				<img [src]="images[1]"
-					alt="diverse tech stack.">
-			</div>
-			<div class="carousel-caption">
-				<h1>Diverse Tech-Stack</h1>
-				<h4>
-					Variety of software solutions, including games, textures, models, and APIs.
-				</h4>
-			</div>
-		</ng-template>
-		<ng-template ngbSlide>
-			<div class="img-wrapper">
-				<img [src]="images[2]"
-					alt="sophisticated modeling.">
-			</div>
-			<div class="carousel-caption">
-				<h1>
-					Sophisticated Modeling
-				</h1>
-				<h4>
-					Software is developed with a strict sense of data modelling.
-				</h4>
-			</div>
-		</ng-template>
-	</ngb-carousel>
+    <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+            <div class="img-wrapper">
+                <img
+                    [src]="images[0]"
+                    style="width:100%"
+                    alt="always free.">
+            </div>
+            <div class="carousel-caption">
+                <h1>Always Free. Always Open.</h1>
+                <h4>
+                    All source code is available for free on
+                    <a
+                        s
+                        href="https://github.com/kevin-medzorian">
+                        GitHub.
+                    </a>
+                </h4>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="img-wrapper">
+                <img
+                    [src]="images[1]"
+                    alt="diverse tech stack.">
+            </div>
+            <div class="carousel-caption">
+                <h1>Diverse Tech-Stack</h1>
+                <h4>
+                    Variety of software solutions, including games, textures, models, and APIs.
+                </h4>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="img-wrapper">
+                <img
+                    [src]="images[2]"
+                    alt="sophisticated modeling.">
+            </div>
+            <div class="carousel-caption">
+                <h1>Sophisticated Modeling</h1>
+                <h4>
+                    Software is developed with a strict sense of data modelling.
+                </h4>
+            </div>
+        </ng-template>
+    </ngb-carousel>
 </div>
 
 
-<div class="d-flex flex-wrap justify-content-center"
-	style="margin-bottom: 50px;">
-	<div class="card p-0 m-5">
-		<h5 class="card-header">
-			Tools
-			<span class="text-muted">
-				{{tools.length}} items
-			</span>
-		</h5>
-		<div class="card-body p-0">
-			<div class="list-group list-group-flush">
-				<a *ngFor="let tool of tools"
-					(mouseleave)="tool.hov = 0"
-					(mouseover)="tool.hov = 1"
-					(touchend)="tool.hov = 0"
-					(touchmove)="tool.hov = 1"
-					(touchcancel)="tool.hov = 0"
-					(click)="router.navigate([tool.route])"
-					class="list-group-item list-group-item-action">
-					<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1">{{tool.name}}</h5>
-					</div>
-					<p class="mb-1">{{tool.desc}}</p>
-					<span *ngIf="tool.hov"
-						class="goto"
-						@fadeIn
-						@fadeOut>
-						<i class="bi bi-arrow-right-circle"></i>
-					</span>
-				</a>
-			</div>
-		</div>
-	</div>
-	<div class="card p-0 m-5">
-		<h5 class="card-header">
-			Textures
-			<span *ngIf="textures.length > 0 else loadingText"
-				class="text-muted">
-				{{textures.length}} items
-			</span>
-			<ng-template #loadingText>
-				<span class="text-muted">Loading...</span>
-			</ng-template>
-		</h5>
-		<div class="card-body d-flex justify-content-center">
-			<div *ngIf="textures.length > 0 else loading"
-				class="d-flex flex-wrap justify-content-center textures">
-				<div *ngFor="let texture of textures"
-					class="image p-2">
-					<span style="width: 100%; text-align: center;">
-						{{texture.fileName!.split(".")[0]}}
-					</span>
-					<img [src]="texture.url"
-						[alt]="texture.fileName"
-						(mouseenter)="texture.hov = 1"
-						(touchstart)="texture.hov = 1"
-						(touchend)="texture.hov = 0"
-						(touchmove)="texture.hov = 1"
-						(touchcancel)="texture.hov = 0"
-						(mouseleave)="texture.hov = 0"
-						(click)="window.open(this.rawTexturePath + texture.fileName)">
-					<span *ngIf="texture.hov"
-						class="download"
-						@fadeIn
-						@fadeOut>
-						<i (mouseenter)="texture.hov = 1"
-							class="bi bi-download"></i>
-					</span>
-				</div>
-			</div>
-			<ng-template #loading>
-				<div class="spinner-border"
-					role="status">
-					<span class="visually-hidden">Loading...</span>
-				</div>
-			</ng-template>
-		</div>
-	</div>
-	<div class="card p-0 m-5">
-		<h5 class="card-header">
-			3D Models
-			<span class="text-muted">1 item</span>
-		</h5>
-		<div class="card-body">
-			<div class="d-flex justify-content-center">
-				<img class="img-fluid" style="padding: 20px; width: 85%;"
-					src="/assets/images/models.jpg"
-					alt="Models">
-			</div>
-			<div class="d-flex justify-content-center nowrap">
-				You can find all 3D models on&nbsp;
-				<a style="text-decoration: none"
-					href="https://sketchfab.com/kmedzori">
-					Sketchfab.
-				</a>
-			</div>
-		</div>
-	</div>
-	<div class="card p-0 m-5">
-		<h5 class="card-header">
-			Project Euler Solutions
-			<span class="text-muted">75 items</span>
-		</h5>
-		<div class="card-body"
-			style="padding-left: 20px; padding-right: 20px;">
-			<div class="text-center">
-				<span style="font-size: 1.5rem; display: inline-flex;">
-					What is&nbsp;
-					<a style="text-decoration: none"
-						href="https://projecteuler.net/">
-						Project Euler
-					</a>
-					?
-				</span>
-				<div class="row">
-					<div class="col-10 euler-text"
-						style="margin: auto; text-align:right;">
-						"Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve.
+
+<div
+    class="d-flex flex-wrap justify-content-center"
+    style="margin-bottom: 50px;">
+    <div class="card p-0 m-5">
+        <h5 class="card-header">
+            Tools
+            <span class="text-muted">{{tools.length}} items</span>
+        </h5>
+        <div class="card-body p-0">
+            <div class="list-group list-group-flush">
+                <a
+                    *ngFor="let tool of tools"
+                    (mouseleave)="tool.hov = 0"
+                    (mouseover)="tool.hov = 1"
+                    (touchend)="tool.hov = 0"
+                    (touchmove)="tool.hov = 1"
+                    (touchcancel)="tool.hov = 0"
+                    (click)="router.navigate([tool.route])"
+                    class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{tool.name}}</h5>
+                    </div>
+                    <p class="mb-1">{{tool.desc}}</p>
+                    <span
+                        *ngIf="tool.hov"
+                        class="goto"
+                        @fadeIn
+                        @fadeOut>
+                        <i class="bi bi-arrow-right-circle"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card p-0 m-5">
+        <h5 class="card-header">
+            Textures
+            <span
+                *ngIf="textures.length > 0 else loadingText"
+                class="text-muted">
+                {{textures.length}} items
+            </span>
+            <ng-template #loadingText>
+                <span class="text-muted">Loading...</span>
+            </ng-template>
+        </h5>
+        <div class="card-body d-flex justify-content-center">
+            <div
+                *ngIf="textures.length > 0 else loading"
+                class="d-flex flex-wrap justify-content-center textures">
+                <div
+                    *ngFor="let texture of textures"
+                    class="image p-2">
+                    <span style="width: 100%; text-align: center;">{{texture.fileName!.split(".")[0]}}</span>
+                    <img
+                        [src]="texture.url"
+                        [alt]="texture.fileName"
+                        (mouseenter)="texture.hov = 1"
+                        (touchstart)="texture.hov = 1"
+                        (touchend)="texture.hov = 0"
+                        (touchmove)="texture.hov = 1"
+                        (touchcancel)="texture.hov = 0"
+                        (mouseleave)="texture.hov = 0"
+                        (click)="window.open(this.rawTexturePath + texture.fileName)">
+                    <span
+                        *ngIf="texture.hov"
+                        class="download"
+                        @fadeIn
+                        @fadeOut>
+                        <i
+                            (mouseenter)="texture.hov = 1"
+                            class="bi bi-download"></i>
+                    </span>
+                </div>
+            </div>
+            <ng-template #loading>
+                <div
+                    class="spinner-border"
+                    role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <div class="card p-0 m-5">
+        <h5 class="card-header">
+            3D Models
+            <span class="text-muted">1 item</span>
+        </h5>
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <img
+                    class="img-fluid"
+                    style="padding: 20px; width: 85%;"
+                    src="/assets/images/models.jpg"
+                    alt="Models">
+            </div>
+            <div class="d-flex justify-content-center nowrap">
+                You can find all 3D models on&nbsp;
+                <a href="https://sketchfab.com/kmedzori">Sketchfab.</a>
+            </div>
+        </div>
+    </div>
+    <div class="card p-0 m-5">
+        <h5 class="card-header">
+            Project Euler Solutions
+            <span class="text-muted">75 items</span>
+        </h5>
+        <div
+            class="card-body"
+            style="padding-left: 20px; padding-right: 20px;">
+            <div class="text-center">
+                <span style="font-size: 1.5rem; display: inline-flex;">
+                    What is&nbsp;
+                    <a
+                        s
+                        href="https://projecteuler.net/">
+                        Project Euler
+                    </a>
+                    ?
+                </span>
+                <div class="row">
+                    <div
+                        class="col-10 euler-text"
+                        style="margin: auto; text-align:right;">
+                        "Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve.
                         Although mathematics will help you arrive at elegant and efficient methods, the use of a computer and programming skills will be required to solve most problems.""
-						<br>
-						<i style="font-size: 1rem;">― Colin Hughes</i>
-					</div>
-					<div class="col-2" style="flex: 1 1 100px;">
-						<img class="img-fluid"
-							src="/assets/images/euler_portrait.jpg"
-							alt="Euler Portrait"
-							style="border-radius: 20px; box-shadow: 0 0 4px black; max-height: 150px;">
-					</div>
-				</div>
-				<div class="mt-5">
-					You can find all my solutions
-					<a style="text-decoration: none;"
-						href="https://github.com/Kevin-Medzorian/Project-Euler-Solutions">
-						here
-					</a>
-					on Github.
-				</div>
-			</div>
-		</div>
-	</div>
+                        <br>
+                        <i style="font-size: 1rem;">― Colin Hughes</i>
+                    </div>
+                    <div
+                        class="col-2"
+                        style="flex: 1 1 100px;">
+                        <img
+                            class="img-fluid"
+                            src="/assets/images/euler_portrait.jpg"
+                            alt="Euler Portrait"
+                            style="border-radius: 20px; box-shadow: 0 0 4px black; max-height: 150px;">
+                    </div>
+                </div>
+                <div class="mt-5">
+                    You can find all my solutions
+                    <a href="https://github.com/Kevin-Medzorian/Project-Euler-Solutions">here</a>
+                    on Github.
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-<div class="d-flex text-center gradient" style="height: 200px; padding-bottom: 40px;">
+<div
+    class="d-flex text-center gradient"
+    style="height: 200px; padding-bottom: 40px;">
     <div style="margin: auto; height: min-content; padding-top: 14px;">
-	<h4>Please support free software.</h4>
-	<a class="text-decoration-none m-1"
-		href="https://itsfoss.com/">
-		IT'S FOSS
-	</a>
-    <i class="bi bi-dash"></i>
-	<a class="text-decoration-none m-1"
-		href="https://www.fsf.org/">
-		Free Software Foundation
-	</a>
+        <h4>Please support free software.</h4>
+        <a
+            class="m-1"
+            href="https://itsfoss.com/">
+            IT'S FOSS
+        </a>
+        <i class="bi bi-dash"></i>
+        <a
+            class="m-1"
+            href="https://www.fsf.org/">
+            Free Software Foundation
+        </a>
     </div>
 </div>

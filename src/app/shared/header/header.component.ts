@@ -32,6 +32,7 @@ export class HeaderComponent {
                          {text: 'Free & Open Source', size: 2}];
   currentTitle: Title   = this.titles[0];
   
+  showDropdownTitle = false;
   showTitle = true; // Used for fading in/out different titles.
   showRight = true; // Show the 'kevin medzorian' right logo/text.
 
@@ -115,12 +116,18 @@ export class HeaderComponent {
   }
 
   onFancyHeaderComponent() {
+    this.showTitle = true;
+    this.currentTitle = this.titles[0];
     window.scrollTo(0, 0);
     this.concurrentDomHeader(); // Force concurrent DOM styling.
     this.resizeHeader();
   }
 
   onSimpleHeaderComponent() {
+    setTimeout(() => {
+      this.showDropdownTitle = true;
+    }, DELAY);
+
     this.dropdown.menu.current = menu.find(x => x.route == this.router.url.substring(1));
     this.dropdown.menu.items = menu.filter(x => x != this.dropdown.menu.current);
     this.stickyHeader(); // Force sticky styling.

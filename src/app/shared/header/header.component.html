@@ -1,54 +1,78 @@
 <header #header>
-	<div (click)="router.navigate(['/'])"
-		class="logo">
-		<img alt="KFOSS"
-			src="assets/images/circle-kfoss.svg"
-			height="50">
-	</div>
-	<div class="center">
-		<ng-container *ngIf="router.url == '/' else menu">
-			<h1 #title
-				*ngIf="showTitle"
-				[ngStyle]="{'font-size': currentTitle.size + 'rem'}"
-				class="title-text no-break"
-				@fadeIn
-				@fadeOut>
-				{{currentTitle.text}}
-			</h1>
-		</ng-container>
-		<ng-template #menu>
-			<div class="dropdown" (click)="dropdown.open = !dropdown.open">
-				<h2 class="menu-trigger title-text no-break">
-					{{dropdown.menu.current?.text}}
-					<div class="dropdown-button">
-						<i *ngIf="dropdown.open else down" class='bi bi-chevron-up position-absolute' @fadeIn @fadeOut></i>
-						<ng-template #down>
-							<i class='bi bi-chevron-down position-absolute' @fadeIn @fadeOut></i>
-						</ng-template>
-					</div>
-				</h2>
-				<div class="menu" [class.gradient]="dropdown.open" *ngIf="dropdown.open" [@dropDownMenu]>
-					<h4 class="menu-item" *ngFor="let item of dropdown.menu.items; let i = index" (click)="stickyHeader(); router.navigate([item.route])">
-						<ng-container *ngIf="item != dropdown.menu.current">
-							{{item.text}}
-						</ng-container>
-					</h4>
-				</div>
-			</div>
-		</ng-template>
-	</div>
-	<div *ngIf="showRight"
-		class="right"
-		@fadeIn
-		@fadeOut>
-		<img alt="kevin medzorian"
-			class="my-icon"
-			src="assets/images/circle-me.png"
-			height="50">
-		<div class="credits no-break">kevin medzorian</div>
-	</div>
+    <div
+        (click)="router.navigate(['/'])"
+        class="logo">
+        <img
+            alt="KFOSS"
+            src="assets/images/circle-kfoss.svg"
+            height="50">
+    </div>
+    <div class="center">
+        <ng-container *ngIf="router.url == '/' else menu">
+            <h1
+                #title
+                *ngIf="showTitle"
+                [ngStyle]="{'font-size': currentTitle.size + 'rem'}"
+                class="title-text no-break"
+                @fadeIn
+                @fadeOut>
+                {{currentTitle.text}}
+            </h1>
+        </ng-container>
+        <ng-template #menu>
+            <div
+                class="dropdown"
+                (click)="dropdown.open = !dropdown.open">
+                <h2
+                    *ngIf="showDropdownTitle"
+                    class="menu-trigger title-text no-break"
+                    @fadeIn
+                    @fadeOut>
+                    {{dropdown.menu.current?.text}}
+                    <div class="dropdown-button">
+                        <i
+                            *ngIf="dropdown.open else down"
+                            class='bi bi-chevron-up position-absolute'
+                            @fadeIn
+                            @fadeOut></i>
+                        <ng-template #down>
+                            <i
+                                class='bi bi-chevron-down position-absolute'
+                                @fadeIn
+                                @fadeOut></i>
+                        </ng-template>
+                    </div>
+                </h2>
+                <div
+                    class="menu"
+                    [class.gradient]="dropdown.open"
+                    *ngIf="dropdown.open"
+                    [@dropDownMenu]>
+                    <h4
+                        class="menu-item"
+                        *ngFor="let item of dropdown.menu.items; let i = index"
+                        (click)="stickyHeader(); router.navigate([item.route])">
+                        <ng-container *ngIf="item != dropdown.menu.current">{{item.text}}</ng-container>
+                    </h4>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div
+        *ngIf="showRight"
+        class="right"
+        @fadeIn
+        @fadeOut>
+        <img
+            alt="kevin medzorian"
+            class="my-icon"
+            src="assets/images/circle-me.png"
+            height="50">
+        <div class="credits no-break">kevin medzorian</div>
+    </div>
 </header>
-<div #outlet
-	style="padding-top: 30px;">
-	<router-outlet (activate)="onActivate($event)"></router-outlet>
+<div
+    #outlet
+    style="padding-top: 30px;">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
 </div>

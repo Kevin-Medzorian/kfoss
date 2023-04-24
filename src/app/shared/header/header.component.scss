@@ -75,7 +75,6 @@ header .right {
 
 .menu-trigger {
     cursor: pointer;
-    margin-top: -14px;
     padding-top: 14px;
     padding-left: 6px;
     margin-bottom: 0px;
@@ -118,7 +117,9 @@ header .right {
 
 .dropdown {
     width: min-content;
-
+    position: absolute;
+    left: 85px;
+    top: 0px;
 
     h1 {
         user-select: none;

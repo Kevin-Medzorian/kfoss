@@ -21,4 +21,6 @@ export class ToolsComponent {
   ngOnInit() {
     console.log("[ToolsComponent] Current Tool: ", this.currentTool);
   }
+  ngAfterViewInit() {
+  }
 }
