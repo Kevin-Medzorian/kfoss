@@ -5,7 +5,8 @@
     touch-action: none;
     background-color: rgba(185, 185, 185);
     background-image: url("/assets/images/background-2.jpg");
-    //filter: opacity(0.97);
+    background-size: cover;
+    filter: blur(3);
     z-index: 10000;
     top: -10vh;
     left: -10vw;

@@ -55,7 +55,7 @@ export class HeaderComponent {
 
   @HostListener('window:resize', ['$event'])
   checkShowRight() {
-    const changeAtWidth = (this.currentTitle == this.titles[0]) ? 360 : 500;
+    const changeAtWidth = (this.currentTitle == this.titles[0] && this.router.url == '/') ? 360 : 500;
     this.showRight = window.innerWidth > changeAtWidth;
   }
 
@@ -109,6 +109,8 @@ export class HeaderComponent {
   onActivate(event: any): void {
     console.log("[HeaderComponent] Current Component: ", event.constructor.name);
     this.app.currentComponent = event.constructor.name;
+    this.checkShowRight();
+    window.scrollTo(0, 0);
 
     if (this.router.url == '/')
       this.onFancyHeaderComponent();
@@ -119,7 +121,6 @@ export class HeaderComponent {
   onFancyHeaderComponent() {
     this.showTitle = true;
     this.currentTitle = this.titles[0];
-    window.scrollTo(0, 0);
     this.concurrentDomHeader(); // Force concurrent DOM styling.
     this.resizeHeader();
   }
