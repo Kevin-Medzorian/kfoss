@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DropDownAnimation, FadeIn, FadeOut } from '../animations';
 import { MainComponent } from 'src/app/main/main.component';
@@ -28,10 +28,10 @@ export class HeaderComponent {
   minHeight:     number =  85;
   newHeight:     number =   0;
 
-  titles: Title[]    = [ {text: 'Kfoss.', size: 4},
+  titles:   Title[]    = [ {text: 'Kfoss.', size: 4},
                          {text: 'Free & Open Source', size: 2}];
   currentTitle: Title   = this.titles[0];
-
+  
   showTitle = true; // Used for fading in/out different titles.
   showRight = true; // Show the 'kevin medzorian' right logo/text.
 
@@ -45,6 +45,7 @@ export class HeaderComponent {
   };
   
   constructor(public element: ElementRef, public renderer: Renderer2, public router: Router, public app: MainComponent) {
+    window.scrollTo(0, 0);
   }
 
   ngAfterViewInit() {
@@ -52,11 +53,8 @@ export class HeaderComponent {
   }
 
   checkShowRight() {
-    if (this.currentTitle == this.titles[0]) {
-      this.showRight = window.innerWidth > 360;
-    } else {
-      this.showRight = window.innerWidth > 500;
-    }
+    const changeAtWidth = (this.currentTitle == this.titles[0]) ? 360 : 500;
+    this.showRight = window.innerWidth > changeAtWidth;
   }
 
   animatedTitleChange(text: Title) {
@@ -68,23 +66,26 @@ export class HeaderComponent {
     }, DELAY);
   }
 
-  resizeHeader(ev: any) {
-    const currentHeaderHeight = this.initialHeight - window.scrollY;
+  @HostListener('window:scroll', ['$event'])
+  resizeHeader() {
+    if (this.router.url == '/') {
+      const currentHeaderHeight = this.initialHeight - window.scrollY;
 
-    if (currentHeaderHeight <= this.minHeight){
-      this.stickyHeader();       // Force a fixed/sticky header.
+      if (currentHeaderHeight < this.minHeight){
+        this.stickyHeader();       // Force a fixed/sticky header.
 
-      // Check if need to update title text
-      if (this.showTitle && this.currentTitle != this.titles[1])
-        this.animatedTitleChange(this.titles[1]);
-  
-    } else {
+        // Check if need to update title text
+        if (this.showTitle && this.currentTitle != this.titles[1])
+          this.animatedTitleChange(this.titles[1]);
+    
+      } else {
 
-      // Check if need to update title text
-      if (this.showTitle && this.currentTitle != this.titles[0])
-        this.animatedTitleChange(this.titles[0]);
+        // Check if need to update title text
+        if (this.showTitle && this.currentTitle != this.titles[0])
+          this.animatedTitleChange(this.titles[0]);
 
-      this.concurrentDomHeader(); // force concurrent-dom header
+        this.concurrentDomHeader(); // force concurrent-dom header
+      }
     }
   }
 
@@ -104,21 +105,25 @@ export class HeaderComponent {
 
   // Sets the currentComponent var in MainComponent using router-outlet 'activate' callback event.
   onActivate(event: any): void {
+    console.log("[HeaderComponent] Current Component: ", event.constructor.name);
     this.app.currentComponent = event.constructor.name;
-    
-    if (this.app.currentComponent == 'HomeComponent') {
-      this.concurrentDomHeader();
 
-      document.addEventListener('scroll', (ev) => {
-        this.resizeHeader(ev);
-      });
+    if (this.router.url == '/')
+      this.onFancyHeaderComponent();
+    else
+      this.onSimpleHeaderComponent();
+  }
 
-    } else {
-      this.dropdown.menu.current = menu.find(x => x.route == this.router.url.substring(1));
-      this.dropdown.menu.items = menu.filter(x => x != this.dropdown.menu.current);
-      this.stickyHeader();
-    }
+  onFancyHeaderComponent() {
+    window.scrollTo(0, 0);
+    this.concurrentDomHeader(); // Force concurrent DOM styling.
+    this.resizeHeader();
+  }
 
-    window.onresize = () => this.checkShowRight();
+  onSimpleHeaderComponent() {
+    this.dropdown.menu.current = menu.find(x => x.route == this.router.url.substring(1));
+    this.dropdown.menu.items = menu.filter(x => x != this.dropdown.menu.current);
+    this.stickyHeader(); // Force sticky styling.
+    this.outlet!.nativeElement.style.marginTop  = this.minHeight - 30 + 'px';
   }
 }

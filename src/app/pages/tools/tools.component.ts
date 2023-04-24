@@ -9,13 +9,16 @@ import { menu } from 'src/app/shared/models/dropdown.model';
   styleUrls: ['./tools.component.scss']
 })
 export class ToolsComponent {
+  Math = Math
 
-  public currentTool: Tool | undefined;
+  public imageUrl: string = "/assets/images/tools/";
+  public currentTool: Tool;
 
   constructor(private router: Router){
-    this.currentTool = tools.find(x => x.route == router.url.substring(1));
+    this.currentTool = tools.find(x => x.route == router.url.substring(1)) || tools[0];
   }
 
   ngOnInit() {
+    console.log("[ToolsComponent] Current Tool: ", this.currentTool);
   }
 }

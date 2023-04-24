@@ -103,7 +103,7 @@
 					(touchend)="tool.hov = 0"
 					(touchmove)="tool.hov = 1"
 					(touchcancel)="tool.hov = 0"
-					[href]="app.baseHref + tool.route"
+					(click)="router.navigate([tool.route])"
 					class="list-group-item list-group-item-action">
 					<div class="d-flex w-100 justify-content-between">
 						<h5 class="mb-1">{{tool.name}}</h5>

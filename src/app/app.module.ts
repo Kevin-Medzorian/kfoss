@@ -11,6 +11,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
+import { SafeHtmlPipe } from './shared/safe-html.pipe';
 
 // Get baseHref from compilation.
 export function getBaseHref(platformLocation: PlatformLocation): string {
@@ -25,7 +26,8 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     LoaderComponent,
     ToolsComponent,
     PageNotFoundComponent,
-    AboutComponent
+    AboutComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

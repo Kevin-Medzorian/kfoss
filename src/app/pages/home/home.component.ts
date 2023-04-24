@@ -5,6 +5,7 @@ import { MainComponent } from 'src/app/main/main.component';
 import { FadeIn, FadeOut } from 'src/app/shared/animations';
 import { tools } from 'src/app/shared/models/tools.model';
 import texture_index from 'src/assets/images/textures/index.json';
+import { Router } from '@angular/router';
 
 const DELTA=200;
 
@@ -33,10 +34,11 @@ export class HomeComponent {
   rawTexturePath = this.imagePath + 'textures/raw/';
 	images = ['sample-code.jpg', 'sample-unity.jpg', 'sample-smss-inverted.jpg'].map((n) => this.imagePath + n);
 
-  constructor(public app: MainComponent){}
+  constructor(public app: MainComponent, public router: Router){  }
 
   ngOnInit() {
     this.preloadTextures();
+    tools.forEach(t => t.hov = false);
   }
 
   preloadTextures() {

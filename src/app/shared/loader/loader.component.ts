@@ -9,6 +9,8 @@ const DELTA = 500;
   animations: [FadeOut(DELTA)]
 })
 export class LoaderComponent {
+  showLogo = false;
+  showSpinner = false;
   show = true;
 
   ngOnInit(){
@@ -18,7 +20,7 @@ export class LoaderComponent {
 
     window.addEventListener('load', () => {
       document.body.style.overflow = 'unset';
-      setTimeout(()=>this.continue(), 100);
+      this.continue();
     });
 
     setTimeout(()=>this.continue(), 1500);

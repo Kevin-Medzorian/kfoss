@@ -6,7 +6,7 @@
 			height="50">
 	</div>
 	<div class="center">
-		<ng-container *ngIf="app.currentComponent == 'HomeComponent' else menu">
+		<ng-container *ngIf="router.url == '/' else menu">
 			<h1 #title
 				*ngIf="showTitle"
 				[ngStyle]="{'font-size': currentTitle.size + 'rem'}"
@@ -18,7 +18,7 @@
 		</ng-container>
 		<ng-template #menu>
 			<div class="dropdown" (click)="dropdown.open = !dropdown.open">
-				<h1 class="menu-trigger title-text no-break">
+				<h2 class="menu-trigger title-text no-break">
 					{{dropdown.menu.current?.text}}
 					<div class="dropdown-button">
 						<i *ngIf="dropdown.open else down" class='bi bi-chevron-up position-absolute' @fadeIn @fadeOut></i>
@@ -26,9 +26,9 @@
 							<i class='bi bi-chevron-down position-absolute' @fadeIn @fadeOut></i>
 						</ng-template>
 					</div>
-				</h1>
+				</h2>
 				<div class="menu" [class.gradient]="dropdown.open" *ngIf="dropdown.open" [@dropDownMenu]>
-					<h4 class="menu-item" *ngFor="let item of dropdown.menu.items; let i = index">
+					<h4 class="menu-item" *ngFor="let item of dropdown.menu.items; let i = index" (click)="stickyHeader(); router.navigate([item.route])">
 						<ng-container *ngIf="item != dropdown.menu.current">
 							{{item.text}}
 						</ng-container>

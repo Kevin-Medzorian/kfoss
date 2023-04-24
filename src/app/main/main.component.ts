@@ -10,7 +10,7 @@ import { filter } from 'rxjs';
 })
 export class MainComponent {
   public currentComponent: string = "";
-  public ignorePages = ['PageNotFoundComponent'];//, 'ToolsComponent', 'AboutComponent'];
+  public ignorePages = ['PageNotFoundComponent']; //, 'ToolsComponent', 'AboutComponent'];
   public enableLoader = true;
 
   // Use this file to store commonly used variables, functions, etc...

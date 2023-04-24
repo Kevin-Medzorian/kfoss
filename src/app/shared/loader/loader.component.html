@@ -1,6 +1,6 @@
 <div *ngIf="show" class="overlay" @fadeOut>
-    <img alt="kfoss" src="/assets/images/kfoss.png">
+    <img *ngIf="showLogo" alt="kfoss" src="/assets/images/kfoss.svg">
 </div>
-<div class="spinner-border" role="status" *ngIf="show">
+<div class="spinner-border" role="status" *ngIf="show && showSpinner">
     <span class="visually-hidden">Loading...</span>
 </div>
