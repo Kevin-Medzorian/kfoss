@@ -19,7 +19,7 @@ export const tools: Tool[] = [
         desc: 'Simple, always-visible accents utility for typing spanish accent characters.',
         route: 'accents',
         github: {
-            source: ""
+            source: "https://github.com/Kevin-Medzorian/Simple-Accents-Tool"
         },
         images: ['accents/accents-1.jpg', 'accents/accents-2.jpg', 'accents/accents-3.jpg'],
         text: [
@@ -34,7 +34,7 @@ export const tools: Tool[] = [
         desc: "Minimal screenshot tool called 'Screencapper'.",
         route: 'screencapper',
         github: {
-            source: ""
+            source: "https://github.com/Kevin-Medzorian/Advanced-Java-Snipping-Tool"
         },
         images: ['screencapper/screencapper-1.jpg', 'screencapper/screencapper-2.jpg', 'screencapper/screencapper-3.jpg'],
         text: [
@@ -64,7 +64,7 @@ export const tools: Tool[] = [
         desc: "Simple, lightweight C+Qt program that will encrypt/decrypt text using a provided hash.",
         route: 'encrypter',
         github: {
-            source: ""
+            source: "https://github.com/Kevin-Medzorian/Secure-Text-Encryption"
         },
         images: ['encrypter/encrypter-1.jpg', 'encrypter/encrypter-2.jpg'],
         text: [
@@ -80,10 +80,10 @@ export const tools: Tool[] = [
         github: {
             source: "https://github.com/Kevin-Medzorian/Metronome"
         },
-        images: ['metronome/metronome.jpg', 'metronome/studio.svg'],
+        images: ['metronome/metronome.jpg'],
         text: [
             'To all Band Geeks in need: <br> I have made a simple, non-profit, ad-free metronome that works for Android devices.',
-            'This app was developed using Java in <a href="https://developer.android.com/studio">Android Studio.</a>'
+            '<img src="/assets/images/tools/metronome/studio.svg" height="100px"> <br><br> This app was developed using Java in <a href="https://developer.android.com/studio">Android Studio.</a>'
         ]
     }
 ];

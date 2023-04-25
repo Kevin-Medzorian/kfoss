@@ -81,6 +81,17 @@ header .right {
     height: 85px;
 }
 
+.hover {
+    transition-duration: 200ms;
+
+    &:hover {
+        background-color: rgb(146, 146, 146);
+    }
+    &:active {
+        background-color: rgb(90, 90, 90);
+    }
+}
+
 .menu {
     //border-bottom: 1px solid #dcdcdc;
     background: gray;
@@ -114,14 +125,6 @@ header .right {
     position: absolute;
     left: 85px;
     top: 0px;
-    transition-duration: 200ms;
-
-    &:hover {
-        background-color: rgb(146, 146, 146);
-    }
-    &:active {
-        background-color: rgb(90, 90, 90);
-    }
 
     h1 {
         user-select: none;

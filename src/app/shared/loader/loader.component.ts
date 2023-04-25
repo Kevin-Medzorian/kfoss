@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FadeOut } from '../animations';
+import { NavigationEnd, Router } from '@angular/router';
 
 const DELTA = 500;
 @Component({
@@ -9,16 +10,16 @@ const DELTA = 500;
   animations: [FadeOut(DELTA)]
 })
 export class LoaderComponent {
-  showLogo = false;
-  showSpinner = false;
-  show = true;
-
+  public showLogo = false;
+  public showSpinner = false;
+  public show = true;
+  
   ngOnInit(){
     document.body.style.overflow = 'hidden';
 
     window.addEventListener('load', () => {
       document.body.style.overflow = 'unset';
-      setTimeout(()=>this.continue(), 100);
+      setTimeout(()=>this.continue(), 200);
     });
 
     setTimeout(()=>this.continue(), 1500);

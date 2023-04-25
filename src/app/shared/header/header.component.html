@@ -22,27 +22,30 @@
         <ng-template #menu>
             <div
                 class="dropdown"
-                (click)="dropdown.open = !dropdown.open">
-                <h2
-                    *ngIf="showDropdownTitle"
-                    class="menu-trigger title-text no-break"
-                    @fadeIn
-                    @fadeOut>
-                    {{dropdown.menu.current?.text}}
-                    <div class="dropdown-button">
-                        <i
-                            *ngIf="dropdown.open else down"
-                            class='bi bi-chevron-up position-absolute'
-                            @fadeIn
-                            @fadeOut></i>
-                        <ng-template #down>
+                (focusout)="dropdown.open = false;"
+                tabindex="0">
+                <div class="hover" (click)="dropdown.open = !dropdown.open">
+                    <h2
+                        *ngIf="showDropdownTitle"
+                        class="menu-trigger title-text no-break"
+                        @fadeIn
+                        @fadeOut>
+                        {{dropdown.menu.current?.text}}
+                        <div class="dropdown-button">
                             <i
-                                class='bi bi-chevron-down position-absolute'
+                                *ngIf="dropdown.open else down"
+                                class='bi bi-chevron-up position-absolute'
                                 @fadeIn
                                 @fadeOut></i>
-                        </ng-template>
-                    </div>
-                </h2>
+                            <ng-template #down>
+                                <i
+                                    class='bi bi-chevron-down position-absolute'
+                                    @fadeIn
+                                    @fadeOut></i>
+                            </ng-template>
+                        </div>
+                    </h2>
+                </div>
                 <div
                     class="menu"
                     [class.gradient]="dropdown.open"

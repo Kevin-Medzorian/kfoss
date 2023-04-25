@@ -110,8 +110,8 @@ export class HeaderComponent {
     console.log("[HeaderComponent] Current Component: ", event.constructor.name);
     this.app.currentComponent = event.constructor.name;
     this.checkShowRight();
-    window.scrollTo(0, 0);
-
+    window.scrollTo(0,0);
+    
     if (this.router.url == '/')
       this.onFancyHeaderComponent();
     else
@@ -126,6 +126,8 @@ export class HeaderComponent {
   }
 
   onSimpleHeaderComponent() {
+    this.dropdown.open = false;
+
     setTimeout(() => {
       this.showDropdownTitle = true;
     }, DELAY);

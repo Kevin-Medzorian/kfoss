@@ -23,6 +23,6 @@
         Direct Download
     </a>
     <ng-template #releases>
-        <a [href]="currentTool.github.source + '/releases'">Releases (Executables)</a>
+        <a *ngIf="currentTool.route != 'metronome'" [href]="currentTool.github.source + '/releases'">Releases (Executables)</a>
     </ng-template>
 </div>
