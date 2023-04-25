@@ -9,9 +9,9 @@ import { filter } from 'rxjs';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  public currentComponent: string = "";
   public enableLoader = true;
-
+  public validRoute = true;
+  
   // Use this file to store commonly used variables, functions, etc...
   constructor(@Inject(APP_BASE_HREF) public baseHref: string, public router: Router) {
     router.events.pipe(
@@ -21,6 +21,11 @@ export class MainComponent {
 
   // Callback for whenever a route is activated.
   public onNewRoute(e: RouterEvent) {
+    const allPaths = this.router.config.map(x => "/" + x.path);
+
+    this.validRoute = allPaths.includes(e.url);
     this.enableLoader = document.readyState != "complete";
   }
+
+
 }

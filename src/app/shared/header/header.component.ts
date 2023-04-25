@@ -107,8 +107,6 @@ export class HeaderComponent {
 
   // Sets the currentComponent var in MainComponent using router-outlet 'activate' callback event.
   onActivate(event: any): void {
-    console.log("[HeaderComponent] Current Component: ", event.constructor.name);
-    this.app.currentComponent = event.constructor.name;
     this.checkShowRight();
     window.scrollTo(0,0);
     

@@ -1,9 +1,10 @@
-<ng-container *ngIf="currentComponent !='PageNotFoundComponent' else blank">
+<ng-container *ngIf="validRoute else notFound">
     <app-header></app-header>
     <app-footer></app-footer>
     <app-loader *ngIf="enableLoader"></app-loader>
 </ng-container>
-<ng-template #blank>
+
+<ng-template #notFound>
     <router-outlet></router-outlet>
 </ng-template>
 
