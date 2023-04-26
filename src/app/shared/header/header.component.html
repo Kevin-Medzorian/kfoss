@@ -1,5 +1,5 @@
 <header #header>
-    <div
+    <div ngbTooltip="Home"
         (click)="router.navigate(['/'])"
         class="logo">
         <img
@@ -8,7 +8,7 @@
             height="50">
     </div>
     <div class="center">
-        <ng-container *ngIf="router.url == '/' else menu">
+        <ng-container *ngIf="router.url == '/' else other">
             <h1
                 #title
                 *ngIf="showTitle"
@@ -19,51 +19,59 @@
                 {{currentTitle.text}}
             </h1>
         </ng-container>
-        <ng-template #menu>
-            <div
-                class="dropdown"
-                (focusout)="dropdown.open = false;"
-                tabindex="0">
-                <div class="hover" (click)="dropdown.open = !dropdown.open">
-                    <h2
-                        *ngIf="showDropdownTitle"
-                        class="menu-trigger title-text no-break"
-                        @fadeIn
-                        @fadeOut>
-                        {{dropdown.menu.current?.text}}
-                        <div class="dropdown-button">
-                            <i
-                                *ngIf="dropdown.open else down"
-                                class='bi bi-chevron-up position-absolute'
-                                @fadeIn
-                                @fadeOut></i>
-                            <ng-template #down>
+        <ng-template #other>
+            <ng-container *ngIf="router.url == '/kevin-medzorian' else menu">
+                <h2 class="title-text no-break">Kevin Medzorian</h2>
+            </ng-container>
+            <ng-template #menu>
+                <div
+                    class="dropdown"
+                    (focusout)="dropdown.open = false;"
+                    tabindex="0">
+                    <div class="hover" (click)="dropdown.open = !dropdown.open">
+                        <h2
+                            *ngIf="showDropdownTitle"
+                            class="menu-trigger title-text no-break"
+                            @fadeIn
+                            @fadeOut>
+                            {{dropdown.menu.current?.text}}
+                            <div class="dropdown-button">
                                 <i
-                                    class='bi bi-chevron-down position-absolute'
+                                    *ngIf="dropdown.open else down"
+                                    class='bi bi-chevron-up position-absolute'
                                     @fadeIn
                                     @fadeOut></i>
-                            </ng-template>
-                        </div>
-                    </h2>
+                                <ng-template #down>
+                                    <i
+                                        class='bi bi-chevron-down position-absolute'
+                                        @fadeIn
+                                        @fadeOut></i>
+                                </ng-template>
+                            </div>
+                        </h2>
+                    </div>
+                    <div
+                        class="menu"
+                        [class.gradient]="dropdown.open"
+                        *ngIf="dropdown.open"
+                        [@dropDownMenu]>
+                        <h4
+                            class="menu-item"
+                            *ngFor="let item of dropdown.menu.items; let i = index"
+                            (click)="stickyHeader(); router.navigate([item.route])">
+                            <ng-container *ngIf="item != dropdown.menu.current">{{item.text}}</ng-container>
+                        </h4>
+                    </div>
                 </div>
-                <div
-                    class="menu"
-                    [class.gradient]="dropdown.open"
-                    *ngIf="dropdown.open"
-                    [@dropDownMenu]>
-                    <h4
-                        class="menu-item"
-                        *ngFor="let item of dropdown.menu.items; let i = index"
-                        (click)="stickyHeader(); router.navigate([item.route])">
-                        <ng-container *ngIf="item != dropdown.menu.current">{{item.text}}</ng-container>
-                    </h4>
-                </div>
-            </div>
+            </ng-template>
         </ng-template>
     </div>
     <div
-        *ngIf="showRight"
+        *ngIf="showRight && router.url != '/kevin-medzorian'"
         class="right"
+        ngbTooltip="About Me"
+        placement="bottom"
+        (click)="router.navigate(['/kevin-medzorian'])"
         @fadeIn
         @fadeOut>
         <img

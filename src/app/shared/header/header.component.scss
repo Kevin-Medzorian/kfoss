@@ -28,6 +28,13 @@ header .right {
     height: $header-min-height;
     align-self: flex-end;
     padding: 14px;
+    cursor: pointer;
+    &:hover {
+        filter: brightness(1.5) drop-shadow(0 0 5px white);
+    }
+    &:active {
+        filter: brightness(0.5) drop-shadow(0 0 5px rgb(182, 181, 181));
+    }
 }
 
 .credits {
