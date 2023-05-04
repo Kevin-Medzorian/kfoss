@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router, RouterEvent, Event } from '@angular/router';
 import { tools, Tool } from 'src/app/shared/models/tools.model';
 import { menu } from 'src/app/shared/models/dropdown.model';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-tools',
@@ -19,8 +20,8 @@ export class ToolsComponent {
   }
 
   ngOnInit() {
-    console.log("[ToolsComponent] Current Tool: ", this.currentTool);
   }
+
   ngAfterViewInit() {
   }
 }

@@ -21,6 +21,7 @@ export class MainComponent {
 
   // Callback for whenever a route is activated.
   public onNewRoute(e: RouterEvent) {
+    window.scrollTo(0,0);
     const allPaths = this.router.config.map(x => "/" + x.path);
 
     this.validRoute = allPaths.includes(e.url);

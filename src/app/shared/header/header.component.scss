@@ -2,6 +2,9 @@ $header-min-height: 85px; // Must match .ts file
 $header-initial-height: 300px; // Must match .ts file
 $background-color: rgb(45, 45, 45);
 
+.no-select {
+    user-select: none;
+}
 header {
     z-index: 1000;
     background-color: $background-color;

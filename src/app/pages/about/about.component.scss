@@ -1,0 +1,34 @@
+.card {
+    flex: 1 1 650px;
+    border-radius: 15px;
+    width: 800px;
+    max-width: 800px;
+    min-width: 300px;
+    height: fit-content;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.7);
+    margin-bottom: 0px !important;
+    border: none;
+
+    .card-body {
+        min-height: 100px;
+        max-height: 700px;
+        height: fit-content;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        border-top: 2px solid rgba(0, 0, 0, 0.125) !important;
+    }
+
+    .card-header {
+        font-size: 2rem;
+        border: 1px solid var(--card-cap-bg);
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .text-muted {
+        font-size: 1rem;
+        float:right;
+        height: 100%;
+        line-height: 38.2px;
+    }
+}

@@ -1,1 +1,20 @@
-<p>about works!</p>
+<div class="container d-flex justify-content-center p-4">
+    <div class="card mx-auto">
+        <div class="card-header">
+            About Me
+        </div>
+        <div class="card-body">
+            My name is Kevin Medzorian, and I'm a recent computer science graduate from UC San Diego. I have a natural aspiration for computer science, and enjoy living and learning in the world of computing.
+            <br>
+            I have an extensive background in software development, dating back to my early childhood - learning to code with just a laptop and the internet. I have extensive industry and academic experience as a software developer, and I have many hobbies such as web and video game design.
+            <br>
+            Furthermore, I have a passion for higher-tier education, and graduated with a bachelor's of science in computer science at the University of California - San Diego, where I have participated in many undergraduate research opportunities (YonderDeep) and hackathons (like SD Hacks).
+        </div>
+    </div>
+    <div class="d-inline-flex">
+    <img class="img-fluid" src="assets/images/circle-me.png">
+    </div>
+</div>
+<div style="position: absolute; top: 0; width: 100vw; height: 100vh; margin-top: 85px;">
+    <img *ngFor="let img of logos" [src]="'assets/images/tech/' + img" style="height: 85px; width: auto;">
+</div>

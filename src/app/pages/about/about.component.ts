@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import logo_index from 'src/assets/images/tech/index.json';
 
 @Component({
   selector: 'app-about',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
-
+  public logos = logo_index.icons;
 }
