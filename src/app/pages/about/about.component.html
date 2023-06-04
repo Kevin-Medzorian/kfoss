@@ -1,9 +1,9 @@
-<div class="container d-flex justify-content-center p-4">
-    <div class="card mx-auto">
-        <div class="card-header">
+<div class="container d-flex justify-content-center p-4 flex-wrap" style="z-index: 1;">
+    <div class="card mx-auto" style="z-index: 1;">
+        <div class="card-header" style="z-index: 1;">
             About Me
         </div>
-        <div class="card-body">
+        <div class="card-body" style="z-index: 1;">
             My name is Kevin Medzorian, and I'm a recent computer science graduate from UC San Diego. I have a natural aspiration for computer science, and enjoy living and learning in the world of computing.
             <br>
             I have an extensive background in software development, dating back to my early childhood - learning to code with just a laptop and the internet. I have extensive industry and academic experience as a software developer, and I have many hobbies such as web and video game design.
@@ -11,10 +11,10 @@
             Furthermore, I have a passion for higher-tier education, and graduated with a bachelor's of science in computer science at the University of California - San Diego, where I have participated in many undergraduate research opportunities (YonderDeep) and hackathons (like SD Hacks).
         </div>
     </div>
-    <div class="d-inline-flex">
-    <img class="img-fluid" src="assets/images/circle-me.png">
+    <div class="d-inline-flex mx-auto justify-content-center" style="flex: 1 1 600px;">
+        <img class="img-fluid mx-auto" src="assets/images/circle-me.png" style="width: 20vw; height: 20vw; z-index: 1; filter: drop-shadow(0 0 14px rgba(0, 0, 0, 0.7));">
     </div>
 </div>
 <div style="position: absolute; top: 0; width: 100vw; height: 100vh; margin-top: 85px;">
-    <img *ngFor="let img of logos" [src]="'assets/images/tech/' + img" style="height: 85px; width: auto;">
+    <img *ngFor="let img of logos" [src]="'assets/images/tech/' + img" style="height: 85px; margin: 3.9vw; width: auto; z-index: 0;">
 </div>
