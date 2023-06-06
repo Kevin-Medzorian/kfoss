@@ -1,3 +1,10 @@
+/**
+ * Copyright 2023, Kevin Medzorian 
+ * This file is part of KFOSS.
+ * KFOSS is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+ * KFOSS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with KFOSS. If not, see <https://www.gnu.org/licenses/>.
+ **/
 .footer {
     position: fixed;
     display: inline-flex;
@@ -14,14 +21,13 @@
     padding: 0;
 }
 
-i {
+.icon {
     color: rgb(33, 37, 41);
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
-i:hover {
-    color: rgb(75, 75, 75);
-    margin-left: 10px;
+.icon:hover {
+    color: rgb(95, 95, 95);
 }
 
 .left {
@@ -33,4 +39,18 @@ i:hover {
     margin-left: auto;
     font-size: 1.1rem;
     margin-right: 10px;
+}
+
+img:hover {
+    filter: brightness(1.3);
+}
+img:active {
+    filter: brightness(0.8);
+}
+
+
+@media only screen and (max-width: 500px) {
+    .wideonly {
+        display: none;
+    }
 }
