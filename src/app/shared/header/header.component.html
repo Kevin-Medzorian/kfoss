@@ -22,7 +22,9 @@
         </ng-container>
         <ng-template #other>
             <ng-container *ngIf="router.url == '/kevin-medzorian' else menu">
-                <h2 class="title-text no-break">Kevin Medzorian</h2>
+                <div class="title-text-parent">
+                    <h2 class="title-text title-text-position no-break">Kevin Medzorian</h2>
+                </div>
             </ng-container>
             <ng-template #menu>
                 <div
