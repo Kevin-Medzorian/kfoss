@@ -1,0 +1,75 @@
+/**
+ * Copyright 2023, Kevin Medzorian 
+ * This file is part of KFOSS.
+ * KFOSS is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+ * KFOSS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with KFOSS. If not, see <https://www.gnu.org/licenses/>.
+ **/
+.card {
+    z-index: 2;
+    flex: 1 1 650px;
+    border-radius: 15px;
+    width: 800px;
+    max-width: 800px;
+    min-width: 300px;
+    height: fit-content;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.7);
+    margin-bottom: 0px !important;
+    border: none;
+
+    .card-body {
+        font-size: 18px;
+        min-height: 100px;
+        height: fit-content;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        border-top: 2px solid rgba(0, 0, 0, 0.125) !important;
+    }
+
+    .card-header {
+        font-size: 2rem;
+        border: 1px solid var(--card-cap-bg);
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .text-muted {
+        font-size: 1rem;
+        float: right;
+        height: 100%;
+        line-height: 38.2px;
+    }
+}
+
+.me {
+    width: 25vw;
+    height: 25vw;
+    filter: drop-shadow(0 0 14px rgba(0, 0, 0, 0.7));
+}
+
+.background-images {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 85px;
+
+    img {
+        height: 5vw;
+        margin: 5vw;
+        width: auto;
+        filter: opacity(0.8);
+    }
+}
+
+.no-break {
+    white-space: nowrap;
+}
+
+hr {
+    color: black;
+    width: 20%;
+    margin-left: 40%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

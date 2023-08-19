@@ -1,3 +1,10 @@
+/**
+ * Copyright 2023, Kevin Medzorian 
+ * This file is part of KFOSS.
+ * KFOSS is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+ * KFOSS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with KFOSS. If not, see <https://www.gnu.org/licenses/>.
+ **/
 import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DropDownAnimation, FadeIn, FadeOut } from '../animations';
@@ -107,11 +114,9 @@ export class HeaderComponent {
 
   // Sets the currentComponent var in MainComponent using router-outlet 'activate' callback event.
   onActivate(event: any): void {
-    console.log("[HeaderComponent] Current Component: ", event.constructor.name);
-    this.app.currentComponent = event.constructor.name;
     this.checkShowRight();
-    window.scrollTo(0, 0);
-
+    window.scrollTo(0,0);
+    
     if (this.router.url == '/')
       this.onFancyHeaderComponent();
     else
@@ -126,6 +131,8 @@ export class HeaderComponent {
   }
 
   onSimpleHeaderComponent() {
+    this.dropdown.open = false;
+
     setTimeout(() => {
       this.showDropdownTitle = true;
     }, DELAY);

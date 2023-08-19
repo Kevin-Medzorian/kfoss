@@ -1,1 +1,43 @@
-<p>about works!</p>
+<!-- 
+  -- Copyright 2023, Kevin Medzorian
+  --
+  -- This file is part of KFOSS.
+  -- KFOSS is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+  -- KFOSS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+  -- You should have received a copy of the GNU General Public License along with KFOSS. If not, see <https://www.gnu.org/licenses/>.
+  -->
+<div class="container d-flex justify-content-center p-4 flex-wrap">
+    <div class="card mx-auto">
+        <div class="card-header">About Me</div>
+        <div class="card-body">
+            <div class="d-flex mx-auto">
+                <img
+                    alt="Kevin's Portait"
+                    class="img-fluid mx-auto me"
+                    src="assets/images/circle-portrait.png">
+            </div>
+            Hey - my name is Kevin, and I'm a recent computer science graduate from
+            <span class="no-break">
+                UC San Diego
+                <img
+                    alt="UC San Diego Triton"
+                    class="img-fluid"
+                    style="height: 20px;"
+                    src="assets/images/triton.svg">
+                .
+            </span>
+            <br>
+            I have a natural aspiration for computer science, and enjoy living and learning in the world of computing.
+            <hr>
+            I have an extensive background in software development, dating back to my early childhood - learning to code with just a laptop and the internet. I have extensive industry and academic experience as a software developer, and I have many hobbies such as web and video game design.
+            <hr>
+            Furthermore, I have a passion for higher-tier education, and graduated with a bachelor's of science in computer science at the University of California - San Diego, where I have participated in many undergraduate research opportunities (YonderDeep) and hackathons (like SD Hacks).
+        </div>
+    </div>
+</div>
+<div class="background-images">
+    <img
+        alt="Tech Image"
+        *ngFor="let img of logos"
+        [src]="'assets/images/tech/' + img">
+</div>
