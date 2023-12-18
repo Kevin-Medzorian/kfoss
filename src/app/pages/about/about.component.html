@@ -67,7 +67,7 @@
         </div>
     </div>
 </div>
-<div class="background-images">
+<div class="background-images" [style.display]="document.body.clientWidth > 780 ? 'inherit' : 'none'">
     <ng-container>
         <img #images *ngFor="let img of logos" alt="Tech Image" [src]="'assets/images/tech/' + img">
     </ng-container>
