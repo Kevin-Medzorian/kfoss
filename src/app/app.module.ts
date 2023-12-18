@@ -10,15 +10,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { LoaderComponent } from './shared/loader/loader.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { LoaderComponent } from './common/loader/loader.component';
 import { ToolsComponent } from './pages/tools/tools.component';
 import { AboutComponent } from './pages/about/about.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
-import { SafeHtmlPipe } from './shared/safe-html.pipe';
+import { SafeHtmlPipe } from './common/safe-html.pipe';
 
 // Get baseHref from compilation.
 export function getBaseHref(platformLocation: PlatformLocation): string {

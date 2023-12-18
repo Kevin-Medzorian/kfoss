@@ -6,7 +6,7 @@
   -- KFOSS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
   -- You should have received a copy of the GNU General Public License along with KFOSS. If not, see <https://www.gnu.org/licenses/>.
   -->
-<div class="container d-flex justify-content-center p-4 flex-wrap">
+<div class="container d-flex justify-content-center p-4 flex-wrap" #page>
     <div class="card mx-auto">
         <div class="card-header">About Me</div>
         <div class="card-body">
@@ -14,7 +14,7 @@
                 <img
                     alt="Kevin's Portait"
                     class="img-fluid mx-auto me"
-                    src="assets/images/circle-portrait.png">
+                    src="assets/images/portrait-optimized.png">
             </div>
             Hey - my name is Kevin, and I'm a recent computer science graduate from
             <span class="no-break">
@@ -29,15 +29,47 @@
             <br>
             I have a natural aspiration for computer science, and enjoy living and learning in the world of computing.
             <hr>
-            I have an extensive background in software development, dating back to my early childhood - learning to code with just a laptop and the internet. I have extensive industry and academic experience as a software developer, and I have many hobbies such as web and video game design.
+            I have an extensive background in software development, dating back to my early childhood - learning to code with just myself and the internet. I have relevant industry and academic experience as a software developer, and I have many hobbies such as web and video game design.
             <hr>
             Furthermore, I have a passion for higher-tier education, and graduated with a bachelor's of science in computer science at the University of California - San Diego, where I have participated in many undergraduate research opportunities (YonderDeep) and hackathons (like SD Hacks).
         </div>
     </div>
+    <div class="card mx-auto mt-5">
+        <div class="card-header">Notable Projects</div>
+        <div class="card-body">
+            <div class="mx-auto">
+                <div class="row">
+                    <div class="col-9">
+                        <a href="https://receive-kevinmedzor.b4a.run/">RECEIVE - Cloud Based Receipt Manager</a>
+                        <ul>
+                            <li>
+                                <small>Main UI/UX Designer</small>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-3">
+                        <img *ngIf="document.body.clientWidth > 780" style="height: 50px; width: auto;" src="assets/images/receive/logo-extended5.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="mx-auto">
+                eAgree - DocuSign API Proof-Of-Concept
+                <br>
+                <ul>
+                    <li>
+                        <small>2018 SD Hacks Submission</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex mx-auto">
+                KFOSS - Online Portfolio
+            </div>
+        </div>
+    </div>
 </div>
 <div class="background-images">
-    <img
-        alt="Tech Image"
-        *ngFor="let img of logos"
-        [src]="'assets/images/tech/' + img">
+    <ng-container>
+        <img #images *ngFor="let img of logos" alt="Tech Image" [src]="'assets/images/tech/' + img">
+    </ng-container>
 </div>
+<br style="line-height: 5;">

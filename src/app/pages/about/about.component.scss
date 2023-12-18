@@ -42,8 +42,8 @@
 }
 
 .me {
-    width: 25vw;
-    height: 25vw;
+    width: 150px;
+    height: 150px;
     filter: drop-shadow(0 0 14px rgba(0, 0, 0, 0.7));
 }
 
@@ -55,8 +55,9 @@
     margin-top: 85px;
 
     img {
+        position: absolute;
         height: 5vw;
-        margin: 5vw;
+        min-height: 50px;
         width: auto;
         filter: opacity(0.8);
     }

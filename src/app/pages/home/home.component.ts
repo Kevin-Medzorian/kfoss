@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgFor, NgIf } from '@angular/common';
 import { MainComponent } from 'src/app/main/main.component';
-import { FadeIn, FadeOut } from 'src/app/shared/animations';
-import { tools } from 'src/app/shared/models/tools.model';
+import { FadeIn, FadeOut } from 'src/app/common/animations';
+import { tools } from 'src/app/common/models/tools.model';
 import texture_index from 'src/assets/images/textures/index.json';
 import { Router } from '@angular/router';
 

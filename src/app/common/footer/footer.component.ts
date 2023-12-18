@@ -6,27 +6,12 @@
  * You should have received a copy of the GNU General Public License along with KFOSS. If not, see <https://www.gnu.org/licenses/>.
  **/
 import { Component } from '@angular/core';
-import { Router} from '@angular/router';
-import { tools, Tool } from 'src/app/common/models/tools.model';
 
 @Component({
-  selector: 'app-tools',
-  templateUrl: './tools.component.html',
-  styleUrls: ['./tools.component.scss']
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss']
 })
-export class ToolsComponent {
-  Math = Math
+export class FooterComponent {
 
-  public imageUrl: string = "/assets/images/tools/";
-  public currentTool: Tool;
-
-  constructor(private router: Router){
-    this.currentTool = tools.find(x => x.route == router.url.substring(1)) || tools[0];
-  }
-
-  ngOnInit() {
-  }
-
-  ngAfterViewInit() {
-  }
 }
