@@ -5,7 +5,7 @@
  * KFOSS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License along with KFOSS. If not, see <https://www.gnu.org/licenses/>.
  **/
-import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren, Renderer2 } from '@angular/core';
 import logo_index from 'src/assets/images/tech/index.json';
 
 @Component({
@@ -22,6 +22,8 @@ export class AboutComponent {
   public logos = logo_index.icons.sort(() => Math.random() - 0.5).sort(() => Math.random() - 0.5);;  // Randomized
   document = document;
 
+  constructor(private renderer: Renderer2) {}
+
   ngAfterViewInit(): void {
     this.randomlyLayoutIcons();
   }
@@ -37,29 +39,30 @@ export class AboutComponent {
     let x = 50, y = 50;
     const x_increment = 350;
     const y_increment = 250;
-    const marginSize = (1/3)*this.document.body.clientWidth;
-    const middleSize = this.document.body.clientWidth - (2*marginSize);
+    const marginSize = (1/3) * this.document.body.clientWidth;
+    const middleSize = this.document.body.clientWidth - (2 * marginSize);
+
     this.images!.forEach(img => {
-      console.log(img)
       if (x > this.document.body.clientWidth - 75) {
         x = 50;
         y += y_increment;
       }
 
       if (y > pageHeight) {
-        img.nativeElement.style.display = "none";
+        this.renderer.setStyle(img.nativeElement, 'display', 'none');
       } else {
-        img.nativeElement.style.display = "unset";
+        this.renderer.setStyle(img.nativeElement, 'display', 'unset');
       }
 
-      img.nativeElement.style.top = y + (Math.random() * 100) - 50 +"px";
-      img.nativeElement.style.left = x + (Math.random() * 100) - 50 +"px";
+      this.renderer.setStyle(img.nativeElement, 'top', `${y + (Math.random() * 100) - 50}px`);
+      this.renderer.setStyle(img.nativeElement, 'left', `${x + (Math.random() * 100) - 50}px`);
+
       let random = (Math.random() * 80) - 40;
       if (Math.abs(random) < 5) {
         random = (Math.random() * 80) - 40;
       }
 
-      (img.nativeElement as HTMLImageElement).style.transform = `rotate(${random}deg)`;
+      this.renderer.setStyle(img.nativeElement, 'transform', `rotate(${random}deg)`);
       x += x_increment;
 
       if (x > marginSize + 50 && x < marginSize + middleSize - 150) {
